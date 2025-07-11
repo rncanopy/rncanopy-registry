@@ -44,6 +44,6 @@
   "hasHaptics": false,
   "version": "1.0.0",
   "checksum": "995181c0dbdaf117769e60ff2e2402e7",
-  "downloadUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/card/component.tsx.template",
-  "metadataUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/card/component.json"
+  "downloadUrl": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/components/card/component.tsx.template",
+  "metadataUrl": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/components/card/component.json"
 }

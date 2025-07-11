@@ -11,5 +11,5 @@
   ],
   "version": "1.0.0",
   "checksum": "c044b23f3f6e038b2454ecaca131e1a6",
-  "downloadUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/providers/HapticsProvider.tsx.template"
+  "downloadUrl": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/providers/HapticsProvider.tsx.template"
 }

@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2025-07-11T17:37:04.024Z",
-  "baseUrl": "https://raw.githubusercontent.com/rncanopy/registry/main",
+  "lastUpdated": "2025-07-11T17:47:50.017Z",
+  "baseUrl": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main",
   "stats": {
     "components": 11,
     "templates": 4,
@@ -10,10 +10,10 @@
     "totalDependencies": 2
   },
   "endpoints": {
-    "components": "https://raw.githubusercontent.com/rncanopy/registry/main/api/components.json",
-    "templates": "https://raw.githubusercontent.com/rncanopy/registry/main/api/templates.json",
-    "providers": "https://raw.githubusercontent.com/rncanopy/registry/main/api/providers.json",
-    "tokens": "https://raw.githubusercontent.com/rncanopy/registry/main/api/tokens.json"
+    "components": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/api/components.json",
+    "templates": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/api/templates.json",
+    "providers": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/api/providers.json",
+    "tokens": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/api/tokens.json"
   },
   "categories": [
     "feedback",

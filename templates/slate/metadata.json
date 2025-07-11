@@ -4,7 +4,7 @@
   "description": "Neutral, professional tone with sharp edges and compact spacing - perfect for business and admin interfaces",
   "author": "RNCanopy Team",
   "version": "1.0.0",
-  "lastUpdated": "2025-07-11T17:37:04.024Z",
+  "lastUpdated": "2025-07-11T17:47:50.017Z",
   "personality": {
     "mood": "minimal",
     "spacing": "compact",
@@ -22,56 +22,56 @@
   "tokenFiles": [
     {
       "type": "colors",
-      "url": "https://raw.githubusercontent.com/rncanopy/registry/main/templates/slate/colors.json",
+      "url": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/templates/slate/colors.json",
       "checksum": "f7556eb18187efa76104bd58287ac779"
     },
     {
       "type": "radii",
-      "url": "https://raw.githubusercontent.com/rncanopy/registry/main/templates/slate/radii.json",
+      "url": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/templates/slate/radii.json",
       "checksum": "d5cda6cf9563444bfb7c90b3470ad8ad"
     },
     {
       "type": "spacing",
-      "url": "https://raw.githubusercontent.com/rncanopy/registry/main/templates/slate/spacing.json",
+      "url": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/templates/slate/spacing.json",
       "checksum": "96fd407243e156f817b282bbb656d220"
     },
     {
       "type": "typography",
-      "url": "https://raw.githubusercontent.com/rncanopy/registry/main/templates/slate/typography.json",
+      "url": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/templates/slate/typography.json",
       "checksum": "0177355359c90c400ec8dbb8d59c1c3c"
     },
     {
       "type": "shadows",
-      "url": "https://raw.githubusercontent.com/rncanopy/registry/main/templates/slate/shadows.json",
+      "url": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/templates/slate/shadows.json",
       "checksum": "fb5544a608565d03e41a902826c4f077"
     },
     {
       "type": "borders",
-      "url": "https://raw.githubusercontent.com/rncanopy/registry/main/templates/slate/borders.json",
+      "url": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/templates/slate/borders.json",
       "checksum": "7e3ac33b8d403570492c035af99574b1"
     },
     {
       "type": "sizes",
-      "url": "https://raw.githubusercontent.com/rncanopy/registry/main/templates/slate/sizes.json",
+      "url": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/templates/slate/sizes.json",
       "checksum": "19b30edfdcf435809009852442d26fa0"
     },
     {
       "type": "durations",
-      "url": "https://raw.githubusercontent.com/rncanopy/registry/main/templates/slate/durations.json",
+      "url": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/templates/slate/durations.json",
       "checksum": "f30dbb296181063ca6c84c8013040fd5"
     },
     {
       "type": "easings",
-      "url": "https://raw.githubusercontent.com/rncanopy/registry/main/templates/slate/easings.json",
+      "url": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/templates/slate/easings.json",
       "checksum": "9e17910f13bb1aebc4438edaf9e8a1dd"
     },
     {
       "type": "opacity",
-      "url": "https://raw.githubusercontent.com/rncanopy/registry/main/templates/slate/opacity.json",
+      "url": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/templates/slate/opacity.json",
       "checksum": "3d126d04949f30bca8891b2933c536ee"
     }
   ],
-  "templateUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/templates/slate/template.json",
-  "metadataUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/templates/slate/metadata.json",
+  "templateUrl": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/templates/slate/template.json",
+  "metadataUrl": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/templates/slate/metadata.json",
   "checksum": "de3e41bf412e1b15aff21cad2d3295da"
 }

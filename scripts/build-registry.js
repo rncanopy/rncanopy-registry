@@ -9,7 +9,7 @@ const REGISTRY_PATH = path.join(__dirname, '..');
 
 // Registry configuration
 const REGISTRY_CONFIG = {
-  baseUrl: 'https://raw.githubusercontent.com/rncanopy/registry/main',
+  baseUrl: 'https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main',
   version: '1.0.0',
   lastUpdated: new Date().toISOString(),
 };

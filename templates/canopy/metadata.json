@@ -4,7 +4,7 @@
   "description": "Modern React Native design system with balanced color palette and comfortable spacing - perfect for professional apps",
   "author": "RNCanopy Team",
   "version": "1.0.0",
-  "lastUpdated": "2025-07-11T17:37:04.024Z",
+  "lastUpdated": "2025-07-11T17:47:50.017Z",
   "personality": {
     "mood": "professional",
     "spacing": "comfortable",
@@ -22,56 +22,56 @@
   "tokenFiles": [
     {
       "type": "colors",
-      "url": "https://raw.githubusercontent.com/rncanopy/registry/main/templates/canopy/colors.json",
+      "url": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/templates/canopy/colors.json",
       "checksum": "91c62737bc6742cfc90667b6a832269d"
     },
     {
       "type": "radii",
-      "url": "https://raw.githubusercontent.com/rncanopy/registry/main/templates/canopy/radii.json",
+      "url": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/templates/canopy/radii.json",
       "checksum": "ad7520e744b9634ccf2450440fa6c269"
     },
     {
       "type": "spacing",
-      "url": "https://raw.githubusercontent.com/rncanopy/registry/main/templates/canopy/spacing.json",
+      "url": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/templates/canopy/spacing.json",
       "checksum": "9ee0908e2e52d351449696d975308a95"
     },
     {
       "type": "typography",
-      "url": "https://raw.githubusercontent.com/rncanopy/registry/main/templates/canopy/typography.json",
+      "url": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/templates/canopy/typography.json",
       "checksum": "2890f349fbb3555221597d70663d0dd1"
     },
     {
       "type": "shadows",
-      "url": "https://raw.githubusercontent.com/rncanopy/registry/main/templates/canopy/shadows.json",
+      "url": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/templates/canopy/shadows.json",
       "checksum": "d874d08d270047a07f402bde283385ed"
     },
     {
       "type": "borders",
-      "url": "https://raw.githubusercontent.com/rncanopy/registry/main/templates/canopy/borders.json",
+      "url": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/templates/canopy/borders.json",
       "checksum": "ff2a952cfca4f32fced80ff1c2a5b523"
     },
     {
       "type": "sizes",
-      "url": "https://raw.githubusercontent.com/rncanopy/registry/main/templates/canopy/sizes.json",
+      "url": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/templates/canopy/sizes.json",
       "checksum": "e91b4b6ea4fa3d00f7448922ca49e529"
     },
     {
       "type": "durations",
-      "url": "https://raw.githubusercontent.com/rncanopy/registry/main/templates/canopy/durations.json",
+      "url": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/templates/canopy/durations.json",
       "checksum": "6197b496747503711b896035ff88b4d5"
     },
     {
       "type": "easings",
-      "url": "https://raw.githubusercontent.com/rncanopy/registry/main/templates/canopy/easings.json",
+      "url": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/templates/canopy/easings.json",
       "checksum": "9e17910f13bb1aebc4438edaf9e8a1dd"
     },
     {
       "type": "opacity",
-      "url": "https://raw.githubusercontent.com/rncanopy/registry/main/templates/canopy/opacity.json",
+      "url": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/templates/canopy/opacity.json",
       "checksum": "29702c9802d48ecd8becc369db3389da"
     }
   ],
-  "templateUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/templates/canopy/template.json",
-  "metadataUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/templates/canopy/metadata.json",
+  "templateUrl": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/templates/canopy/template.json",
+  "metadataUrl": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/templates/canopy/metadata.json",
   "checksum": "6447127f6b16a1ce84a4b0bf811974ba"
 }

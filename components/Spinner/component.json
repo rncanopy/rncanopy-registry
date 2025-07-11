@@ -34,6 +34,6 @@
   "hasHaptics": false,
   "version": "1.0.0",
   "checksum": "b873267adc9bef6ff2db6b1a448e0363",
-  "downloadUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/spinner/component.tsx.template",
-  "metadataUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/spinner/component.json"
+  "downloadUrl": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/components/spinner/component.tsx.template",
+  "metadataUrl": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/components/spinner/component.json"
 }

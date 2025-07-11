@@ -36,6 +36,6 @@
   "hasHaptics": true,
   "version": "1.0.0",
   "checksum": "a067dcaae9ef629e2cf5fb4476931693",
-  "downloadUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/switch/component.tsx.template",
-  "metadataUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/switch/component.json"
+  "downloadUrl": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/components/switch/component.tsx.template",
+  "metadataUrl": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/components/switch/component.json"
 }

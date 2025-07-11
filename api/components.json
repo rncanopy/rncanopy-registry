@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2025-07-11T17:37:04.024Z",
-  "baseUrl": "https://raw.githubusercontent.com/rncanopy/registry/main",
+  "lastUpdated": "2025-07-11T17:47:50.017Z",
+  "baseUrl": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main",
   "components": [
     {
       "name": "alert",
@@ -48,8 +48,8 @@
       "hasHaptics": false,
       "version": "1.0.0",
       "checksum": "4cb190b3c190d669121580d753e27209",
-      "downloadUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/alert/component.tsx.template",
-      "metadataUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/alert/component.json"
+      "downloadUrl": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/components/alert/component.tsx.template",
+      "metadataUrl": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/components/alert/component.json"
     },
     {
       "name": "badge",
@@ -97,8 +97,8 @@
       "hasHaptics": false,
       "version": "1.0.0",
       "checksum": "96bed8358f7876ebd022adcf8a83deb6",
-      "downloadUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/badge/component.tsx.template",
-      "metadataUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/badge/component.json"
+      "downloadUrl": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/components/badge/component.tsx.template",
+      "metadataUrl": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/components/badge/component.json"
     },
     {
       "name": "button",
@@ -153,8 +153,8 @@
       "hasHaptics": true,
       "version": "1.0.0",
       "checksum": "b2c9af0de0c2755f4e3226e3733be0ed",
-      "downloadUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/button/component.tsx.template",
-      "metadataUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/button/component.json"
+      "downloadUrl": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/components/button/component.tsx.template",
+      "metadataUrl": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/components/button/component.json"
     },
     {
       "name": "card",
@@ -202,8 +202,8 @@
       "hasHaptics": false,
       "version": "1.0.0",
       "checksum": "995181c0dbdaf117769e60ff2e2402e7",
-      "downloadUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/card/component.tsx.template",
-      "metadataUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/card/component.json"
+      "downloadUrl": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/components/card/component.tsx.template",
+      "metadataUrl": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/components/card/component.json"
     },
     {
       "name": "gradientbutton",
@@ -260,8 +260,8 @@
       "hasHaptics": true,
       "version": "1.0.0",
       "checksum": "1b9fec02c3657dfeecbc0a287ac1a27c",
-      "downloadUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/gradientbutton/component.tsx.template",
-      "metadataUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/gradientbutton/component.json"
+      "downloadUrl": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/components/gradientbutton/component.tsx.template",
+      "metadataUrl": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/components/gradientbutton/component.json"
     },
     {
       "name": "input",
@@ -304,8 +304,8 @@
       "hasHaptics": false,
       "version": "1.0.0",
       "checksum": "4917a046744ed6dee44b6a4c0be7573f",
-      "downloadUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/input/component.tsx.template",
-      "metadataUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/input/component.json"
+      "downloadUrl": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/components/input/component.tsx.template",
+      "metadataUrl": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/components/input/component.json"
     },
     {
       "name": "slider",
@@ -347,8 +347,8 @@
       "hasHaptics": true,
       "version": "1.0.0",
       "checksum": "6265561ee432f4ce0d1ba94c8524504e",
-      "downloadUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/slider/component.tsx.template",
-      "metadataUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/slider/component.json"
+      "downloadUrl": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/components/slider/component.tsx.template",
+      "metadataUrl": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/components/slider/component.json"
     },
     {
       "name": "spinner",
@@ -386,8 +386,8 @@
       "hasHaptics": false,
       "version": "1.0.0",
       "checksum": "b873267adc9bef6ff2db6b1a448e0363",
-      "downloadUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/spinner/component.tsx.template",
-      "metadataUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/spinner/component.json"
+      "downloadUrl": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/components/spinner/component.tsx.template",
+      "metadataUrl": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/components/spinner/component.json"
     },
     {
       "name": "switch",
@@ -427,8 +427,8 @@
       "hasHaptics": true,
       "version": "1.0.0",
       "checksum": "a067dcaae9ef629e2cf5fb4476931693",
-      "downloadUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/switch/component.tsx.template",
-      "metadataUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/switch/component.json"
+      "downloadUrl": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/components/switch/component.tsx.template",
+      "metadataUrl": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/components/switch/component.json"
     },
     {
       "name": "toast",
@@ -473,8 +473,8 @@
       "hasHaptics": true,
       "version": "1.0.0",
       "checksum": "3ccb4e1882009f61a9fafbe3c2f36357",
-      "downloadUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/toast/component.tsx.template",
-      "metadataUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/toast/component.json"
+      "downloadUrl": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/components/toast/component.tsx.template",
+      "metadataUrl": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/components/toast/component.json"
     },
     {
       "name": "toggle",
@@ -517,8 +517,8 @@
       "hasHaptics": true,
       "version": "1.0.0",
       "checksum": "6ec6c199c126964a7d863d23bc454d56",
-      "downloadUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/toggle/component.tsx.template",
-      "metadataUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/toggle/component.json"
+      "downloadUrl": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/components/toggle/component.tsx.template",
+      "metadataUrl": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/components/toggle/component.json"
     }
   ],
   "stats": {

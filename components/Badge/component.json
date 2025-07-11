@@ -44,6 +44,6 @@
   "hasHaptics": false,
   "version": "1.0.0",
   "checksum": "96bed8358f7876ebd022adcf8a83deb6",
-  "downloadUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/badge/component.tsx.template",
-  "metadataUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/badge/component.json"
+  "downloadUrl": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/components/badge/component.tsx.template",
+  "metadataUrl": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/components/badge/component.json"
 }

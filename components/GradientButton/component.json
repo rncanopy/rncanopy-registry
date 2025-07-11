@@ -53,6 +53,6 @@
   "hasHaptics": true,
   "version": "1.0.0",
   "checksum": "1b9fec02c3657dfeecbc0a287ac1a27c",
-  "downloadUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/gradientbutton/component.tsx.template",
-  "metadataUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/gradientbutton/component.json"
+  "downloadUrl": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/components/gradientbutton/component.tsx.template",
+  "metadataUrl": "https://raw.githubusercontent.com/rncanopy/rncanopy-registry/main/components/gradientbutton/component.json"
 }
