@@ -1,0 +1,21 @@
+export const sizes = {
+  none: 0,
+  xs: 16,
+  sm: 24,
+  md: 32,
+  lg: 40,
+  xl: 48,
+  '2xl': 56,
+  '3xl': 64,
+  '4xl': 80,
+  '5xl': 96,
+  full: '100%',
+  screenWidth: '100vw',
+  screenHeight: '100vh',
+  containerSm: 640,
+  containerMd: 768,
+  containerLg: 1024,
+  containerXl: 1280,
+} as const;
+
+export type SizeToken = keyof typeof sizes;

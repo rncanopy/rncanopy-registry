@@ -1,0 +1,39 @@
+{
+  "name": "spinner",
+  "displayName": "Spinner",
+  "description": "Loading indicators with multiple styles and sizes",
+  "category": "loading",
+  "dependencies": [],
+  "requiredProviders": [
+    "ThemeProvider"
+  ],
+  "files": [
+    "component.tsx.template"
+  ],
+  "exports": [
+    "SpinnerSize",
+    "SpinnerProps",
+    "Spinner",
+    "DotSpinner"
+  ],
+  "variants": [],
+  "sizes": [
+    "xs",
+    "sm",
+    "md",
+    "lg",
+    "xl"
+  ],
+  "tokenUsage": [
+    "iconSizes.xs",
+    "iconSizes.sm",
+    "iconSizes.lg",
+    "iconSizes.xl",
+    "iconSizes.md"
+  ],
+  "hasHaptics": false,
+  "version": "1.0.0",
+  "checksum": "b873267adc9bef6ff2db6b1a448e0363",
+  "downloadUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/spinner/component.tsx.template",
+  "metadataUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/spinner/component.json"
+}

@@ -1,0 +1,58 @@
+{
+  "name": "gradientbutton",
+  "displayName": "Gradient Button",
+  "description": "Button component with gradient backgrounds and advanced styling",
+  "category": "forms",
+  "dependencies": [
+    "expo-linear-gradient"
+  ],
+  "requiredProviders": [
+    "HapticsProvider",
+    "ThemeProvider"
+  ],
+  "files": [
+    "component.tsx.template"
+  ],
+  "exports": [
+    "GradientButtonVariant",
+    "GradientButtonType",
+    "GradientButtonSize",
+    "GradientButtonProps",
+    "GradientButton"
+  ],
+  "variants": [
+    "default",
+    "subtle",
+    "vibrant"
+  ],
+  "sizes": [
+    "xs",
+    "sm",
+    "md",
+    "lg",
+    "xl"
+  ],
+  "tokenUsage": [
+    "colors.gradients[gradientType",
+    "colors.gradients]",
+    "colors.gradients.primary.default",
+    "typography.fontSizes.xs",
+    "iconSizes.xs",
+    "typography.fontSizes.sm",
+    "iconSizes.sm",
+    "typography.fontSizes.lg",
+    "iconSizes.lg",
+    "typography.fontSizes.xl",
+    "iconSizes.xl",
+    "typography.fontSizes.md",
+    "iconSizes.md",
+    "radii.md",
+    "typography.fontWeights.medium",
+    "typography.lineHeights.normal"
+  ],
+  "hasHaptics": true,
+  "version": "1.0.0",
+  "checksum": "1b9fec02c3657dfeecbc0a287ac1a27c",
+  "downloadUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/gradientbutton/component.tsx.template",
+  "metadataUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/gradientbutton/component.json"
+}

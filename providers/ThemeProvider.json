@@ -1,0 +1,15 @@
+{
+  "name": "themeprovider",
+  "displayName": "ThemeProvider",
+  "description": "ThemeProvider context provider",
+  "dependencies": [],
+  "exports": [
+    "ThemeProvider",
+    "useTheme",
+    "useColorMode",
+    "useColors"
+  ],
+  "version": "1.0.0",
+  "checksum": "748cbdad2bf37f52b99cf958696e9a44",
+  "downloadUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/providers/ThemeProvider.tsx.template"
+}

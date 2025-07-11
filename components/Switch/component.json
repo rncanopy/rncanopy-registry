@@ -1,0 +1,41 @@
+{
+  "name": "switch",
+  "displayName": "Switch",
+  "description": "Toggle control with smooth animations and haptic feedback",
+  "category": "forms",
+  "dependencies": [],
+  "requiredProviders": [
+    "HapticsProvider",
+    "ThemeProvider"
+  ],
+  "files": [
+    "component.tsx.template"
+  ],
+  "exports": [
+    "SwitchVariant",
+    "SwitchSize",
+    "SwitchProps",
+    "Switch"
+  ],
+  "variants": [
+    "default",
+    "primary",
+    "success",
+    "destructive"
+  ],
+  "sizes": [
+    "sm",
+    "md",
+    "lg"
+  ],
+  "tokenUsage": [
+    "typography.fontSizes.sm",
+    "typography.fontWeights.medium",
+    "typography.lineHeights.normal"
+  ],
+  "hasHaptics": true,
+  "version": "1.0.0",
+  "checksum": "a067dcaae9ef629e2cf5fb4476931693",
+  "downloadUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/switch/component.tsx.template",
+  "metadataUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/switch/component.json"
+}

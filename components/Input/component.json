@@ -1,0 +1,44 @@
+{
+  "name": "input",
+  "displayName": "Input",
+  "description": "Text input component with validation states and helper text",
+  "category": "forms",
+  "dependencies": [],
+  "requiredProviders": [
+    "ThemeProvider"
+  ],
+  "files": [
+    "component.tsx.template"
+  ],
+  "exports": [
+    "InputVariant",
+    "InputSize",
+    "InputProps",
+    "Input"
+  ],
+  "variants": [
+    "default",
+    "ghost",
+    "underline"
+  ],
+  "sizes": [
+    "xs",
+    "sm",
+    "md",
+    "lg"
+  ],
+  "tokenUsage": [
+    "typography.fontSizes.xs",
+    "typography.fontSizes.sm",
+    "typography.fontSizes.lg",
+    "typography.fontSizes.md",
+    "radii.sm",
+    "borders.widths.thin",
+    "typography.fontWeights.medium"
+  ],
+  "hasHaptics": false,
+  "version": "1.0.0",
+  "checksum": "4917a046744ed6dee44b6a4c0be7573f",
+  "downloadUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/input/component.tsx.template",
+  "metadataUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/input/component.json"
+}

@@ -1,0 +1,46 @@
+{
+  "name": "toast",
+  "displayName": "Toast",
+  "description": "Overlay notifications with positioning and animations",
+  "category": "feedback",
+  "dependencies": [],
+  "requiredProviders": [
+    "HapticsProvider",
+    "ThemeProvider"
+  ],
+  "files": [
+    "component.tsx.template"
+  ],
+  "exports": [
+    "ToastVariant",
+    "ToastPosition",
+    "ToastProps",
+    "Toast",
+    "ToastContextValue",
+    "useToast",
+    "ToastProvider"
+  ],
+  "variants": [
+    "default",
+    "success",
+    "error",
+    "info",
+    "warning"
+  ],
+  "sizes": [],
+  "tokenUsage": [
+    "radii.md",
+    "typography.fontSizes.md",
+    "typography.fontWeights.semiBold",
+    "typography.fontSizes.sm",
+    "typography.lineHeights.relaxed",
+    "typography.fontWeights.medium",
+    "typography.fontSizes.lg",
+    "typography.fontWeights.bold"
+  ],
+  "hasHaptics": true,
+  "version": "1.0.0",
+  "checksum": "3ccb4e1882009f61a9fafbe3c2f36357",
+  "downloadUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/toast/component.tsx.template",
+  "metadataUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/toast/component.json"
+}

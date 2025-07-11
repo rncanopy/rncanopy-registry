@@ -1,0 +1,255 @@
+import React, { useState } from 'react';
+import { 
+  TouchableOpacity, 
+  View, 
+  Text, 
+  StyleSheet, 
+  Animated,
+  ViewStyle 
+} from 'react-native';
+import { useTheme } from './providers/ThemeProvider';
+import { useHaptics } from './providers/HapticsProvider';
+import { 
+  spacing, 
+  typography, 
+  opacity,
+  durations
+} from './constants/ui';
+
+export type SwitchVariant = 'default' | 'primary' | 'success' | 'destructive';
+export type SwitchSize = 'sm' | 'md' | 'lg';
+
+export interface SwitchProps {
+  value?: boolean;
+  onValueChange?: (value: boolean) => void;
+  variant?: SwitchVariant;
+  size?: SwitchSize;
+  disabled?: boolean;
+  label?: string;
+  style?: ViewStyle;
+  enableHaptics?: boolean;
+}
+
+export function Switch({
+  value: controlledValue,
+  onValueChange,
+  variant = 'default',
+  size = 'md',
+  disabled = false,
+  label,
+  style,
+  enableHaptics = true,
+}: SwitchProps) {
+  const { currentColors } = useTheme();
+  const { triggerHaptic } = useHaptics();
+  const [internalValue, setInternalValue] = useState(false);
+  const [thumbPosition] = useState(new Animated.Value(controlledValue ? 1 : 0));
+  const [thumbScale] = useState(new Animated.Value(1));
+  const [trackAnimation] = useState(new Animated.Value(controlledValue ? 1 : 0));
+
+  const isControlled = controlledValue !== undefined;
+  const isChecked = isControlled ? controlledValue : internalValue;
+
+  const handlePress = async () => {
+    if (disabled) return;
+
+    const newValue = !isChecked;
+    
+    if (!isControlled) {
+      setInternalValue(newValue);
+    }
+    
+    onValueChange?.(newValue);
+    
+    if (enableHaptics) {
+      await triggerHaptic('selection');
+    }
+
+    // Smooth thumb animation with spring
+    Animated.parallel([
+      Animated.spring(thumbPosition, {
+        toValue: newValue ? 1 : 0,
+        tension: 100,
+        friction: 8,
+        useNativeDriver: false,
+      }),
+      Animated.spring(trackAnimation, {
+        toValue: newValue ? 1 : 0,
+        tension: 100,
+        friction: 8,
+        useNativeDriver: false,
+      }),
+      // Thumb scale animation for press feedback
+      Animated.sequence([
+        Animated.timing(thumbScale, {
+          toValue: 1.1,
+          duration: durations.fast,
+          useNativeDriver: true,
+        }),
+        Animated.timing(thumbScale, {
+          toValue: 1,
+          duration: durations.fast,
+          useNativeDriver: true,
+        }),
+      ]),
+    ]).start();
+  };
+
+  const getSizeStyles = () => {
+    switch (size) {
+      case 'sm':
+        return {
+          width: 44,
+          height: 24,
+          thumbSize: 20,
+          padding: 2,
+        };
+      case 'lg':
+        return {
+          width: 64,
+          height: 36,
+          thumbSize: 32,
+          padding: 2,
+        };
+      default: // md
+        return {
+          width: 54,
+          height: 30,
+          thumbSize: 26,
+          padding: 2,
+        };
+    }
+  };
+
+  const getVariantColors = () => {
+    switch (variant) {
+      case 'primary':
+        return currentColors.primary;
+      case 'success':
+        return currentColors.success;
+      case 'destructive':
+        return currentColors.destructive;
+      default:
+        return currentColors.primary;
+    }
+  };
+
+  const sizeStyles = getSizeStyles();
+  const activeColor = getVariantColors();
+  const trackWidth = sizeStyles.width - (sizeStyles.padding * 2);
+  const thumbTravel = trackWidth - sizeStyles.thumbSize;
+
+  // Initialize animations based on current value
+  React.useEffect(() => {
+    thumbPosition.setValue(isChecked ? 1 : 0);
+    trackAnimation.setValue(isChecked ? 1 : 0);
+  }, [isChecked, thumbPosition, trackAnimation]);
+
+  const thumbTranslateX = thumbPosition.interpolate({
+    inputRange: [0, 1],
+    outputRange: [0, thumbTravel],
+  });
+
+  const trackBackgroundColor = trackAnimation.interpolate({
+    inputRange: [0, 1],
+    outputRange: [currentColors.muted, disabled ? currentColors.disabled : activeColor],
+  });
+
+  const thumbBackgroundColor = trackAnimation.interpolate({
+    inputRange: [0, 1],
+    outputRange: [
+      disabled ? currentColors.disabledForeground : currentColors.background,
+      disabled ? currentColors.disabledForeground : currentColors.background
+    ],
+  });
+
+  const styles = StyleSheet.create({
+    container: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: spacing[3],
+    },
+    switchContainer: {
+      width: sizeStyles.width,
+      height: sizeStyles.height,
+      borderRadius: sizeStyles.height / 2,
+      padding: sizeStyles.padding,
+      justifyContent: 'center',
+      opacity: disabled ? opacity[50] : 1,
+    },
+    track: {
+      flex: 1,
+      height: '100%',
+      borderRadius: sizeStyles.height / 2,
+      position: 'relative',
+    },
+    thumb: {
+      width: sizeStyles.thumbSize,
+      height: sizeStyles.thumbSize,
+      borderRadius: sizeStyles.thumbSize / 2,
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      shadowColor: '#000000',
+      shadowOffset: { 
+        width: 0, 
+        height: 2 
+      },
+      shadowOpacity: opacity[10],
+      shadowRadius: 4,
+      elevation: 4,
+      borderWidth: 0.5,
+      borderColor: currentColors.border + '20',
+    },
+    label: {
+      fontSize: typography.fontSizes.sm,
+      fontWeight: typography.fontWeights.medium,
+      color: disabled ? currentColors.disabledForeground : currentColors.foreground,
+      lineHeight: typography.lineHeights.normal * typography.fontSizes.sm,
+    },
+  });
+
+  return (
+    <View style={[styles.container, style]}>
+      <TouchableOpacity
+        style={styles.switchContainer}
+        onPress={handlePress}
+        disabled={disabled}
+        activeOpacity={1}
+        accessible={true}
+        accessibilityLabel={label || 'Switch'}
+        accessibilityHint="Toggles the selected state"
+        accessibilityRole="switch"
+        accessibilityState={{ checked: isChecked }}
+      >
+        <Animated.View
+          style={[
+            styles.track,
+            {
+              backgroundColor: trackBackgroundColor,
+            },
+          ]}
+        >
+          <Animated.View
+            style={[
+              styles.thumb,
+              {
+                backgroundColor: thumbBackgroundColor,
+                transform: [
+                  { translateX: thumbTranslateX },
+                  { scale: thumbScale }
+                ],
+              },
+            ]}
+          />
+        </Animated.View>
+      </TouchableOpacity>
+      
+      {label && (
+        <Text style={styles.label}>
+          {label}
+        </Text>
+      )}
+    </View>
+  );
+}

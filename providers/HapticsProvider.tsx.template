@@ -1,0 +1,78 @@
+import React, { createContext, useContext, ReactNode } from 'react';
+import * as Haptics from 'expo-haptics';
+import { Platform } from 'react-native';
+import { haptics, HapticToken } from './constants/ui/haptics';
+
+interface HapticsContextType {
+  triggerHaptic: (hapticType: HapticToken) => Promise<void>;
+  isHapticsSupported: boolean;
+}
+
+const HapticsContext = createContext<HapticsContextType | undefined>(undefined);
+
+interface HapticsProviderProps {
+  children: ReactNode;
+  enabled?: boolean;
+}
+
+export function HapticsProvider({ children, enabled = true }: HapticsProviderProps) {
+  const isHapticsSupported = Platform.OS === 'ios' || Platform.OS === 'android';
+
+  const triggerHaptic = async (hapticType: HapticToken): Promise<void> => {
+    if (!enabled || !isHapticsSupported) {
+      return;
+    }
+
+    try {
+      const hapticConfig = haptics[hapticType];
+
+      switch (hapticConfig.type) {
+        case 'selection':
+          await Haptics.selectionAsync();
+          break;
+        
+        case 'impact':
+          const impactStyle = hapticConfig.intensity === 'light' 
+            ? Haptics.ImpactFeedbackStyle.Light
+            : hapticConfig.intensity === 'medium'
+            ? Haptics.ImpactFeedbackStyle.Medium
+            : Haptics.ImpactFeedbackStyle.Heavy;
+          await Haptics.impactAsync(impactStyle);
+          break;
+        
+        case 'notification':
+          const notificationStyle = hapticConfig.style === 'success'
+            ? Haptics.NotificationFeedbackType.Success
+            : hapticConfig.style === 'warning'
+            ? Haptics.NotificationFeedbackType.Warning
+            : Haptics.NotificationFeedbackType.Error;
+          await Haptics.notificationAsync(notificationStyle);
+          break;
+        
+        default:
+          console.warn(`Unsupported haptic type: ${(hapticConfig as any).type}`);
+      }
+    } catch (error) {
+      console.warn('Haptic feedback failed:', error);
+    }
+  };
+
+  const value: HapticsContextType = {
+    triggerHaptic,
+    isHapticsSupported,
+  };
+
+  return (
+    <HapticsContext.Provider value={value}>
+      {children}
+    </HapticsContext.Provider>
+  );
+}
+
+export function useHaptics(): HapticsContextType {
+  const context = useContext(HapticsContext);
+  if (!context) {
+    throw new Error('useHaptics must be used within a HapticsProvider');
+  }
+  return context;
+}

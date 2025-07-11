@@ -1,0 +1,15 @@
+{
+  "name": "hapticsprovider",
+  "displayName": "HapticsProvider",
+  "description": "HapticsProvider context provider",
+  "dependencies": [
+    "expo-haptics"
+  ],
+  "exports": [
+    "HapticsProvider",
+    "useHaptics"
+  ],
+  "version": "1.0.0",
+  "checksum": "c044b23f3f6e038b2454ecaca131e1a6",
+  "downloadUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/providers/HapticsProvider.tsx.template"
+}

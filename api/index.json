@@ -1,0 +1,28 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2025-07-11T17:37:04.024Z",
+  "baseUrl": "https://raw.githubusercontent.com/rncanopy/registry/main",
+  "stats": {
+    "components": 11,
+    "templates": 4,
+    "providers": 3,
+    "tokens": 13,
+    "totalDependencies": 2
+  },
+  "endpoints": {
+    "components": "https://raw.githubusercontent.com/rncanopy/registry/main/api/components.json",
+    "templates": "https://raw.githubusercontent.com/rncanopy/registry/main/api/templates.json",
+    "providers": "https://raw.githubusercontent.com/rncanopy/registry/main/api/providers.json",
+    "tokens": "https://raw.githubusercontent.com/rncanopy/registry/main/api/tokens.json"
+  },
+  "categories": [
+    "feedback",
+    "forms",
+    "layout",
+    "loading"
+  ],
+  "dependencies": [
+    "@react-native-community/slider",
+    "expo-linear-gradient"
+  ]
+}

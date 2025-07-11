@@ -1,0 +1,233 @@
+import React from 'react';
+import { 
+  TouchableOpacity, 
+  Text, 
+  StyleSheet, 
+  View,
+  TouchableOpacityProps 
+} from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+import { useTheme } from './providers/ThemeProvider';
+import { useHaptics } from './providers/HapticsProvider';
+import { Spinner, DotSpinner } from './Spinner';
+import { 
+  spacing, 
+  radii, 
+  borders, 
+  typography, 
+  iconSizes, 
+  opacity,
+  colors,
+  GradientType,
+  GradientVariant
+} from './constants/ui';
+
+export type GradientButtonVariant = 'default' | 'subtle' | 'vibrant';
+export type GradientButtonType = 'primary' | 'secondary' | 'accent' | 'success' | 'warning' | 'destructive' | 'info' | 'neutral';
+export type GradientButtonSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+
+export interface GradientButtonProps extends Omit<TouchableOpacityProps, 'style'> {
+  gradientType?: GradientButtonType;
+  gradientVariant?: GradientButtonVariant;
+  size?: GradientButtonSize;
+  loading?: boolean;
+  disabled?: boolean;
+  leftIcon?: React.ReactNode;
+  rightIcon?: React.ReactNode;
+  children?: React.ReactNode;
+  enableHaptics?: boolean;
+  style?: TouchableOpacityProps['style'];
+  gradientDirection?: 'horizontal' | 'vertical' | 'diagonal';
+  spinnerType?: 'default' | 'dots';
+  spinnerColor?: string;
+}
+
+export function GradientButton({
+  gradientType = 'primary',
+  gradientVariant = 'default',
+  size = 'md',
+  loading = false,
+  disabled = false,
+  leftIcon,
+  rightIcon,
+  children,
+  enableHaptics = true,
+  style,
+  gradientDirection = 'horizontal',
+  spinnerType = 'default',
+  spinnerColor,
+  onPress,
+  ...props
+}: GradientButtonProps) {
+  const { currentColors } = useTheme();
+  const { triggerHaptic } = useHaptics();
+
+  const handlePress = async (event: any) => {
+    if (disabled || loading) return;
+    
+    if (enableHaptics) {
+      await triggerHaptic('impactLight');
+    }
+    
+    onPress?.(event);
+  };
+
+  const getGradientColors = () => {
+    if (disabled) {
+      return [currentColors.disabled, currentColors.disabled];
+    }
+
+    const gradientColors = colors.gradients[gradientType as keyof typeof colors.gradients];
+    
+    if (gradientColors && gradientColors[gradientVariant as keyof typeof gradientColors]) {
+      return gradientColors[gradientVariant as keyof typeof gradientColors] as readonly string[];
+    }
+
+    return colors.gradients.primary.default as readonly string[];
+  };
+
+  const getGradientDirection = () => {
+    switch (gradientDirection) {
+      case 'vertical':
+        return { start: { x: 0, y: 0 }, end: { x: 0, y: 1 } };
+      case 'diagonal':
+        return { start: { x: 0, y: 0 }, end: { x: 1, y: 1 } };
+      default: // horizontal
+        return { start: { x: 0, y: 0 }, end: { x: 1, y: 0 } };
+    }
+  };
+
+  const getTextColor = () => {
+    if (disabled) {
+      return currentColors.disabledForeground;
+    }
+
+    if (gradientVariant === 'subtle') {
+      return currentColors.foreground;
+    }
+
+    return currentColors.primaryForeground;
+  };
+
+  const getSizeStyles = () => {
+    switch (size) {
+      case 'xs':
+        return {
+          paddingVertical: spacing[1],
+          paddingHorizontal: spacing[2],
+          fontSize: typography.fontSizes.xs,
+          iconSize: iconSizes.xs,
+        };
+      case 'sm':
+        return {
+          paddingVertical: spacing[1.5],
+          paddingHorizontal: spacing[3],
+          fontSize: typography.fontSizes.sm,
+          iconSize: iconSizes.sm,
+        };
+      case 'lg':
+        return {
+          paddingVertical: spacing[3],
+          paddingHorizontal: spacing[5],
+          fontSize: typography.fontSizes.lg,
+          iconSize: iconSizes.lg,
+        };
+      case 'xl':
+        return {
+          paddingVertical: spacing[4],
+          paddingHorizontal: spacing[6],
+          fontSize: typography.fontSizes.xl,
+          iconSize: iconSizes.xl,
+        };
+      default: // md
+        return {
+          paddingVertical: spacing[2.5],
+          paddingHorizontal: spacing[4],
+          fontSize: typography.fontSizes.md,
+          iconSize: iconSizes.md,
+        };
+    }
+  };
+
+  const sizeStyles = getSizeStyles();
+  const gradientColors = getGradientColors();
+  const gradientProps = getGradientDirection();
+  const textColor = getTextColor();
+
+  const styles = StyleSheet.create({
+    container: {
+      borderRadius: radii.md,
+      overflow: 'hidden',
+      opacity: loading ? opacity[60] : 1,
+    },
+    gradient: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingVertical: sizeStyles.paddingVertical,
+      paddingHorizontal: sizeStyles.paddingHorizontal,
+      gap: spacing[2],
+    },
+    text: {
+      fontSize: sizeStyles.fontSize,
+      fontWeight: typography.fontWeights.medium,
+      lineHeight: typography.lineHeights.normal * sizeStyles.fontSize,
+      color: textColor,
+      textAlign: 'center',
+    },
+    iconContainer: {
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+  });
+
+  return (
+    <TouchableOpacity
+      style={[styles.container, style]}
+      onPress={handlePress}
+      disabled={disabled || loading}
+      activeOpacity={opacity[80]}
+      {...props}
+    >
+      <LinearGradient
+        colors={gradientColors as any}
+        style={styles.gradient}
+        {...gradientProps}
+      >
+        {loading && (
+          <View style={styles.iconContainer}>
+            {spinnerType === 'dots' ? (
+              <DotSpinner 
+                size={size} 
+                color={spinnerColor || textColor} 
+              />
+            ) : (
+              <Spinner 
+                size={size} 
+                color={spinnerColor || textColor} 
+              />
+            )}
+          </View>
+        )}
+        
+        {!loading && leftIcon && (
+          <View style={styles.iconContainer}>
+            {leftIcon}
+          </View>
+        )}
+        
+        {children && (
+          <Text style={styles.text}>
+            {children}
+          </Text>
+        )}
+        
+        {!loading && rightIcon && (
+          <View style={styles.iconContainer}>
+            {rightIcon}
+          </View>
+        )}
+      </LinearGradient>
+    </TouchableOpacity>
+  );
+}

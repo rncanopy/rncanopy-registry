@@ -1,0 +1,239 @@
+import React, { useState, useEffect } from 'react';
+import { 
+  View, 
+  Text, 
+  StyleSheet, 
+  TouchableOpacity,
+  Animated,
+  ViewStyle 
+} from 'react-native';
+import { useTheme } from './providers/ThemeProvider';
+import { 
+  spacing, 
+  radii, 
+  borders, 
+  typography, 
+  iconSizes,
+  durations
+} from './constants/ui';
+
+export type AlertVariant = 'default' | 'success' | 'warning' | 'destructive' | 'info';
+export type AlertSize = 'sm' | 'md';
+
+export interface AlertProps {
+  variant?: AlertVariant;
+  size?: AlertSize;
+  title?: string;
+  description?: string;
+  dismissible?: boolean;
+  onDismiss?: () => void;
+  icon?: React.ReactNode;
+  style?: ViewStyle;
+  children?: React.ReactNode;
+}
+
+export function Alert({
+  variant = 'default',
+  size = 'md',
+  title,
+  description,
+  dismissible = false,
+  onDismiss,
+  icon,
+  style,
+  children,
+}: AlertProps) {
+  const { currentColors } = useTheme();
+  const [fadeAnim] = useState(new Animated.Value(0));
+  const [scaleAnim] = useState(new Animated.Value(0.95));
+
+  useEffect(() => {
+    // Entrance animation
+    Animated.parallel([
+      Animated.timing(fadeAnim, {
+        toValue: 1,
+        duration: durations.normal,
+        useNativeDriver: true,
+      }),
+      Animated.timing(scaleAnim, {
+        toValue: 1,
+        duration: durations.normal,
+        useNativeDriver: true,
+      }),
+    ]).start();
+  }, []);
+
+  const getVariantStyles = () => {
+    switch (variant) {
+      case 'success':
+        return {
+          backgroundColor: currentColors.successSubtle,
+          borderColor: currentColors.success,
+          iconColor: currentColors.success,
+          icon: '✓',
+        };
+      case 'warning':
+        return {
+          backgroundColor: currentColors.warningSubtle,
+          borderColor: currentColors.warning,
+          iconColor: currentColors.warning,
+          icon: '⚠',
+        };
+      case 'destructive':
+        return {
+          backgroundColor: currentColors.destructiveSubtle,
+          borderColor: currentColors.destructive,
+          iconColor: currentColors.destructive,
+          icon: '✕',
+        };
+      case 'info':
+        return {
+          backgroundColor: currentColors.accentSubtle,
+          borderColor: currentColors.accent,
+          iconColor: currentColors.accent,
+          icon: 'ℹ',
+        };
+      default:
+        return {
+          backgroundColor: currentColors.background,
+          borderColor: currentColors.border,
+          iconColor: currentColors.foreground,
+          icon: '•',
+        };
+    }
+  };
+
+  const getSizeStyles = () => {
+    switch (size) {
+      case 'sm':
+        return {
+          paddingVertical: spacing[2],
+          paddingHorizontal: spacing[3],
+          fontSize: typography.fontSizes.sm,
+          titleSize: typography.fontSizes.sm,
+          descriptionSize: typography.fontSizes.xs,
+        };
+      default: // md
+        return {
+          paddingVertical: spacing[3],
+          paddingHorizontal: spacing[4],
+          fontSize: typography.fontSizes.md,
+          titleSize: typography.fontSizes.md,
+          descriptionSize: typography.fontSizes.sm,
+        };
+    }
+  };
+
+  const variantStyles = getVariantStyles();
+  const sizeStyles = getSizeStyles();
+
+  const styles = StyleSheet.create({
+    container: {
+      backgroundColor: variantStyles.backgroundColor,
+      borderWidth: borders.widths.thin,
+      borderColor: variantStyles.borderColor,
+      borderRadius: radii.md,
+      paddingVertical: sizeStyles.paddingVertical,
+      paddingHorizontal: sizeStyles.paddingHorizontal,
+      flexDirection: 'row',
+      alignItems: 'flex-start',
+      gap: spacing[3],
+      shadowColor: '#000000',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.08,
+      shadowRadius: 4,
+      elevation: 2,
+    },
+    icon: {
+      marginTop: spacing[1],
+    },
+    iconText: {
+      fontSize: iconSizes.md,
+      color: variantStyles.iconColor,
+      fontWeight: typography.fontWeights.bold,
+    },
+    content: {
+      flex: 1,
+      gap: spacing[1],
+    },
+    title: {
+      fontSize: sizeStyles.titleSize,
+      fontWeight: typography.fontWeights.semiBold,
+      color: currentColors.foreground,
+      lineHeight: typography.lineHeights.snug * sizeStyles.titleSize,
+    },
+    description: {
+      fontSize: sizeStyles.descriptionSize,
+      lineHeight: typography.lineHeights.relaxed * sizeStyles.descriptionSize,
+      color: currentColors.mutedForeground,
+    },
+    closeButton: {
+      padding: spacing[1],
+      marginTop: -spacing[1],
+      marginRight: -spacing[1],
+    },
+    closeIcon: {
+      fontSize: iconSizes.sm,
+      color: currentColors.mutedForeground,
+      fontWeight: typography.fontWeights.bold,
+    },
+  });
+
+  return (
+    <Animated.View 
+      style={[
+        styles.container, 
+        {
+          opacity: fadeAnim,
+          transform: [{ scale: scaleAnim }],
+        },
+        style
+      ]}
+      accessible={true}
+      accessibilityRole="alert"
+      accessibilityLabel="Alert message"
+      accessibilityLiveRegion="polite"
+    >
+      {/* Icon */}
+      <View style={styles.icon}>
+        {icon || (
+          <Text style={styles.iconText}>
+            {variantStyles.icon}
+          </Text>
+        )}
+      </View>
+
+      {/* Content */}
+      <View style={styles.content}>
+        {title && (
+          <Text style={styles.title}>
+            {title}
+          </Text>
+        )}
+        
+        {description && (
+          <Text style={styles.description}>
+            {description}
+          </Text>
+        )}
+
+        {children}
+      </View>
+
+      {/* Close Button */}
+      {dismissible && (
+        <TouchableOpacity
+          style={styles.closeButton}
+          onPress={onDismiss}
+          accessible={true}
+          accessibilityLabel="Dismiss alert"
+          accessibilityRole="button"
+        >
+          <Text style={styles.closeIcon}>
+            ×
+          </Text>
+        </TouchableOpacity>
+      )}
+    </Animated.View>
+  );
+}

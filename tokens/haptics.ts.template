@@ -1,0 +1,38 @@
+export const haptics = {
+  selection: {
+    intensity: 'light' as const,
+    type: 'selection' as const,
+  },
+  impactLight: {
+    intensity: 'light' as const,
+    type: 'impact' as const,
+  },
+  impactMedium: {
+    intensity: 'medium' as const,
+    type: 'impact' as const,
+  },
+  impactHeavy: {
+    intensity: 'heavy' as const,
+    type: 'impact' as const,
+  },
+  notificationSuccess: {
+    intensity: 'medium' as const,
+    type: 'notification' as const,
+    style: 'success' as const,
+  },
+  notificationWarning: {
+    intensity: 'medium' as const,
+    type: 'notification' as const,
+    style: 'warning' as const,
+  },
+  notificationError: {
+    intensity: 'medium' as const,
+    type: 'notification' as const,
+    style: 'error' as const,
+  },
+} as const;
+
+export type HapticToken = keyof typeof haptics;
+export type HapticIntensity = 'light' | 'medium' | 'heavy';
+export type HapticType = 'selection' | 'impact' | 'notification';
+export type HapticStyle = 'success' | 'warning' | 'error';

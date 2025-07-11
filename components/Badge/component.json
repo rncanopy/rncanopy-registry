@@ -1,0 +1,49 @@
+{
+  "name": "badge",
+  "displayName": "Badge",
+  "description": "Status indicators and labels with multiple variants",
+  "category": "feedback",
+  "dependencies": [],
+  "requiredProviders": [
+    "ThemeProvider"
+  ],
+  "files": [
+    "component.tsx.template"
+  ],
+  "exports": [
+    "BadgeVariant",
+    "BadgeSize",
+    "BadgeProps",
+    "Badge"
+  ],
+  "variants": [
+    "default",
+    "secondary",
+    "destructive",
+    "success",
+    "outline"
+  ],
+  "sizes": [
+    "xs",
+    "sm",
+    "md"
+  ],
+  "tokenUsage": [
+    "typography.fontSizes.sm",
+    "iconSizes.sm",
+    "typography.fontSizes.md",
+    "iconSizes.md",
+    "typography.fontSizes.xs",
+    "iconSizes.xs",
+    "radii.full",
+    "borders.widths.thin",
+    "typography.fontWeights.medium",
+    "typography.lineHeights.tight",
+    "typography.letterSpacings.wide"
+  ],
+  "hasHaptics": false,
+  "version": "1.0.0",
+  "checksum": "96bed8358f7876ebd022adcf8a83deb6",
+  "downloadUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/badge/component.tsx.template",
+  "metadataUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/badge/component.json"
+}

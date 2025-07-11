@@ -1,0 +1,144 @@
+import React, { useState } from 'react';
+import { View, StyleSheet, ViewStyle } from 'react-native';
+import SliderComponent from '@react-native-community/slider';
+import { useTheme } from './providers/ThemeProvider';
+import { useHaptics } from './providers/HapticsProvider';
+import { spacing, opacity } from './constants/ui';
+
+export type SliderVariant = 'default' | 'success' | 'destructive' | 'secondary';
+export type SliderSize = 'sm' | 'md' | 'lg';
+
+export interface SliderProps {
+  value?: number;
+  onValueChange?: (value: number) => void;
+  minimumValue?: number;
+  maximumValue?: number;
+  step?: number;
+  variant?: SliderVariant;
+  size?: SliderSize;
+  disabled?: boolean;
+  style?: ViewStyle;
+  enableHaptics?: boolean;
+}
+
+export function Slider({
+  value: controlledValue,
+  onValueChange,
+  minimumValue = 0,
+  maximumValue = 100,
+  step = 1,
+  variant = 'default',
+  size = 'md',
+  disabled = false,
+  style,
+  enableHaptics = true,
+}: SliderProps) {
+  const { currentColors } = useTheme();
+  const { triggerHaptic } = useHaptics();
+  const [internalValue, setInternalValue] = useState(controlledValue || minimumValue);
+
+  const isControlled = controlledValue !== undefined;
+  const currentValue = isControlled ? controlledValue : internalValue;
+
+  const getSizeStyles = () => {
+    switch (size) {
+      case 'sm':
+        return { height: 32, thumbSize: 16, trackHeight: 3 };
+      case 'lg':
+        return { height: 48, thumbSize: 24, trackHeight: 6 };
+      default:
+        return { height: 40, thumbSize: 20, trackHeight: 4 };
+    }
+  };
+
+  const getVariantColors = () => {
+    if (disabled) {
+      return {
+        minimumTrackTintColor: currentColors.disabled,
+        maximumTrackTintColor: currentColors.disabled,
+        thumbTintColor: currentColors.disabledForeground,
+      };
+    }
+
+    switch (variant) {
+      case 'success':
+        return {
+          minimumTrackTintColor: currentColors.success,
+          maximumTrackTintColor: currentColors.muted,
+          thumbTintColor: currentColors.success,
+        };
+      case 'destructive':
+        return {
+          minimumTrackTintColor: currentColors.destructive,
+          maximumTrackTintColor: currentColors.muted,
+          thumbTintColor: currentColors.destructive,
+        };
+      case 'secondary':
+        return {
+          minimumTrackTintColor: currentColors.secondary,
+          maximumTrackTintColor: currentColors.muted,
+          thumbTintColor: currentColors.secondary,
+        };
+      default:
+        return {
+          minimumTrackTintColor: currentColors.primary,
+          maximumTrackTintColor: currentColors.muted,
+          thumbTintColor: currentColors.primary,
+        };
+    }
+  };
+
+  const handleValueChange = async (newValue: number) => {
+    if (!isControlled) {
+      setInternalValue(newValue);
+    }
+    
+    onValueChange?.(newValue);
+    
+    if (enableHaptics) {
+      await triggerHaptic('selection');
+    }
+  };
+
+  const sizeStyles = getSizeStyles();
+  const colors = getVariantColors();
+
+  const styles = StyleSheet.create({
+    container: {
+      height: sizeStyles.height,
+      justifyContent: 'center',
+      opacity: disabled ? opacity[50] : 1,
+      paddingHorizontal: spacing[2],
+    },
+    slider: {
+      flex: 1,
+      height: sizeStyles.height,
+    },
+  });
+
+  return (
+    <View style={[styles.container, style]}>
+      <SliderComponent
+        style={styles.slider}
+        value={currentValue}
+        onValueChange={handleValueChange}
+        minimumValue={minimumValue}
+        maximumValue={maximumValue}
+        step={step}
+        disabled={disabled}
+        minimumTrackTintColor={colors.minimumTrackTintColor}
+        maximumTrackTintColor={colors.maximumTrackTintColor}
+        thumbTintColor={colors.thumbTintColor}
+        accessible={true}
+        accessibilityLabel="Slider control"
+        accessibilityHint="Swipe to adjust the value"
+        accessibilityRole="adjustable"
+        accessibilityValue={{
+          min: minimumValue,
+          max: maximumValue,
+          now: currentValue,
+        }}
+      />
+    </View>
+  );
+}

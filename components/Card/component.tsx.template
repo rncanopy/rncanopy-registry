@@ -1,0 +1,210 @@
+import React from 'react';
+import { 
+  View, 
+  Text, 
+  StyleSheet, 
+  ViewStyle,
+  TouchableOpacity,
+  TouchableOpacityProps 
+} from 'react-native';
+import { useTheme } from './providers/ThemeProvider';
+import { 
+  spacing, 
+  radii, 
+  borders, 
+  typography, 
+  shadows,
+  opacity
+} from './constants/ui';
+
+export type CardVariant = 'default' | 'elevated' | 'outline' | 'glass';
+export type CardSize = 'sm' | 'md' | 'lg';
+
+export interface CardProps extends Omit<TouchableOpacityProps, 'style'> {
+  variant?: CardVariant;
+  size?: CardSize;
+  header?: React.ReactNode;
+  subheader?: React.ReactNode;
+  content?: React.ReactNode;
+  footer?: React.ReactNode;
+  media?: React.ReactNode;
+  children?: React.ReactNode;
+  style?: ViewStyle;
+  pressable?: boolean;
+  onPress?: () => void;
+}
+
+export function Card({
+  variant = 'default',
+  size = 'md',
+  header,
+  subheader,
+  content,
+  footer,
+  media,
+  children,
+  style,
+  pressable = false,
+  onPress,
+  ...props
+}: CardProps) {
+  const { currentColors } = useTheme();
+
+  const getVariantStyles = () => {
+    switch (variant) {
+      case 'elevated':
+        return {
+          backgroundColor: currentColors.card,
+          borderColor: 'transparent',
+          shadow: shadows.md,
+          borderWidth: 0,
+        };
+      case 'outline':
+        return {
+          backgroundColor: currentColors.card,
+          borderColor: currentColors.border,
+          shadow: 'none',
+          borderWidth: borders.widths.thin,
+        };
+      case 'glass':
+        return {
+          backgroundColor: currentColors.card + Math.round(opacity[80] * 255).toString(16).padStart(2, '0'), // Add transparency
+          borderColor: 'transparent',
+          shadow: shadows.md,
+          borderWidth: 0,
+        };
+      default:
+        return {
+          backgroundColor: currentColors.card,
+          borderColor: currentColors.border,
+          shadow: shadows.sm,
+          borderWidth: borders.widths.thin,
+        };
+    }
+  };
+
+  const getSizeStyles = () => {
+    switch (size) {
+      case 'sm':
+        return {
+          padding: spacing[3],
+          borderRadius: radii.sm,
+          gap: spacing[2],
+        };
+      case 'lg':
+        return {
+          padding: spacing[6],
+          borderRadius: radii.lg,
+          gap: spacing[4],
+        };
+      default: // md
+        return {
+          padding: spacing[4],
+          borderRadius: radii.md,
+          gap: spacing[3],
+        };
+    }
+  };
+
+  const variantStyles = getVariantStyles();
+  const sizeStyles = getSizeStyles();
+
+  const styles = StyleSheet.create({
+    container: {
+      backgroundColor: variantStyles.backgroundColor,
+      borderRadius: sizeStyles.borderRadius,
+      borderWidth: variantStyles.borderWidth,
+      borderColor: variantStyles.borderColor,
+      padding: sizeStyles.padding,
+      gap: sizeStyles.gap,
+      ...(variantStyles.shadow !== 'none' && {
+        shadowColor: currentColors.foreground,
+        shadowOffset: { width: 0, height: spacing[0.5] },
+        shadowOpacity: opacity[10],
+        shadowRadius: spacing[1],
+        elevation: spacing[0.5],
+      }),
+    },
+    header: {
+      fontSize: typography.fontSizes.lg,
+      fontWeight: typography.fontWeights.semiBold,
+      color: currentColors.cardForeground,
+      marginBottom: spacing[2],
+    },
+    subheader: {
+      fontSize: typography.fontSizes.sm,
+      color: currentColors.mutedForeground,
+      marginBottom: spacing[2],
+    },
+    content: {
+      fontSize: typography.fontSizes.md,
+      lineHeight: typography.lineHeights.relaxed * typography.fontSizes.md,
+      color: currentColors.cardForeground,
+    },
+    footer: {
+      paddingTop: spacing[3],
+      borderTopWidth: borders.widths.hairline,
+      borderTopColor: currentColors.border,
+    },
+    media: {
+      borderRadius: radii.sm,
+      marginBottom: spacing[3],
+      overflow: 'hidden',
+    },
+  });
+
+  const CardContent = (
+    <>
+      {media && (
+        <View style={styles.media}>
+          {media}
+        </View>
+      )}
+      
+      {header && (
+        <Text style={styles.header}>
+          {header}
+        </Text>
+      )}
+      
+      {subheader && (
+        <Text style={styles.subheader}>
+          {subheader}
+        </Text>
+      )}
+      
+      {content && (
+        <Text style={styles.content}>
+          {content}
+        </Text>
+      )}
+      
+      {children}
+      
+      {footer && (
+        <View style={styles.footer}>
+          {footer}
+        </View>
+      )}
+    </>
+  );
+
+  if (pressable && onPress) {
+    return (
+      <TouchableOpacity
+        style={[styles.container, style]}
+        onPress={onPress}
+        activeOpacity={opacity[95]}
+        {...props}
+      >
+        {CardContent}
+      </TouchableOpacity>
+    );
+  }
+
+  return (
+    <View style={[styles.container, style]}>
+      {CardContent}
+    </View>
+  );
+}

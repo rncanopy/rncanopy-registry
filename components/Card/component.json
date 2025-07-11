@@ -1,0 +1,49 @@
+{
+  "name": "card",
+  "displayName": "Card",
+  "description": "Container component with elevation and customizable styling",
+  "category": "layout",
+  "dependencies": [],
+  "requiredProviders": [
+    "ThemeProvider"
+  ],
+  "files": [
+    "component.tsx.template"
+  ],
+  "exports": [
+    "CardVariant",
+    "CardSize",
+    "CardProps",
+    "Card"
+  ],
+  "variants": [
+    "default",
+    "elevated",
+    "outline",
+    "glass"
+  ],
+  "sizes": [
+    "sm",
+    "md",
+    "lg"
+  ],
+  "tokenUsage": [
+    "shadows.md",
+    "borders.widths.thin",
+    "shadows.sm",
+    "radii.sm",
+    "radii.lg",
+    "radii.md",
+    "typography.fontSizes.lg",
+    "typography.fontWeights.semiBold",
+    "typography.fontSizes.sm",
+    "typography.fontSizes.md",
+    "typography.lineHeights.relaxed",
+    "borders.widths.hairline"
+  ],
+  "hasHaptics": false,
+  "version": "1.0.0",
+  "checksum": "995181c0dbdaf117769e60ff2e2402e7",
+  "downloadUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/card/component.tsx.template",
+  "metadataUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/card/component.json"
+}

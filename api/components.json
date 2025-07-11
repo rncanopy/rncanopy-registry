@@ -1,0 +1,534 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2025-07-11T17:37:04.024Z",
+  "baseUrl": "https://raw.githubusercontent.com/rncanopy/registry/main",
+  "components": [
+    {
+      "name": "alert",
+      "displayName": "Alert",
+      "description": "Inline feedback messages with multiple variants",
+      "category": "feedback",
+      "dependencies": [],
+      "requiredProviders": [
+        "ThemeProvider"
+      ],
+      "files": [
+        "component.tsx.template"
+      ],
+      "exports": [
+        "AlertVariant",
+        "AlertSize",
+        "AlertProps",
+        "Alert"
+      ],
+      "variants": [
+        "default",
+        "success",
+        "warning",
+        "destructive",
+        "info"
+      ],
+      "sizes": [
+        "sm",
+        "md"
+      ],
+      "tokenUsage": [
+        "typography.fontSizes.sm",
+        "typography.fontSizes.xs",
+        "typography.fontSizes.md",
+        "borders.widths.thin",
+        "radii.md",
+        "iconSizes.md",
+        "typography.fontWeights.bold",
+        "typography.fontWeights.semiBold",
+        "typography.lineHeights.snug",
+        "typography.lineHeights.relaxed",
+        "iconSizes.sm"
+      ],
+      "hasHaptics": false,
+      "version": "1.0.0",
+      "checksum": "4cb190b3c190d669121580d753e27209",
+      "downloadUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/alert/component.tsx.template",
+      "metadataUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/alert/component.json"
+    },
+    {
+      "name": "badge",
+      "displayName": "Badge",
+      "description": "Status indicators and labels with multiple variants",
+      "category": "feedback",
+      "dependencies": [],
+      "requiredProviders": [
+        "ThemeProvider"
+      ],
+      "files": [
+        "component.tsx.template"
+      ],
+      "exports": [
+        "BadgeVariant",
+        "BadgeSize",
+        "BadgeProps",
+        "Badge"
+      ],
+      "variants": [
+        "default",
+        "secondary",
+        "destructive",
+        "success",
+        "outline"
+      ],
+      "sizes": [
+        "xs",
+        "sm",
+        "md"
+      ],
+      "tokenUsage": [
+        "typography.fontSizes.sm",
+        "iconSizes.sm",
+        "typography.fontSizes.md",
+        "iconSizes.md",
+        "typography.fontSizes.xs",
+        "iconSizes.xs",
+        "radii.full",
+        "borders.widths.thin",
+        "typography.fontWeights.medium",
+        "typography.lineHeights.tight",
+        "typography.letterSpacings.wide"
+      ],
+      "hasHaptics": false,
+      "version": "1.0.0",
+      "checksum": "96bed8358f7876ebd022adcf8a83deb6",
+      "downloadUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/badge/component.tsx.template",
+      "metadataUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/badge/component.json"
+    },
+    {
+      "name": "button",
+      "displayName": "Button",
+      "description": "Customizable button component with multiple variants, sizes, and loading states",
+      "category": "forms",
+      "dependencies": [],
+      "requiredProviders": [
+        "HapticsProvider",
+        "ThemeProvider"
+      ],
+      "files": [
+        "component.tsx.template"
+      ],
+      "exports": [
+        "ButtonVariant",
+        "ButtonSize",
+        "ButtonProps",
+        "Button"
+      ],
+      "variants": [
+        "default",
+        "secondary",
+        "outline",
+        "ghost",
+        "destructive",
+        "success"
+      ],
+      "sizes": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "tokenUsage": [
+        "typography.fontSizes.xs",
+        "iconSizes.xs",
+        "typography.fontSizes.sm",
+        "iconSizes.sm",
+        "typography.fontSizes.lg",
+        "iconSizes.lg",
+        "typography.fontSizes.xl",
+        "iconSizes.xl",
+        "typography.fontSizes.md",
+        "iconSizes.md",
+        "radii.md",
+        "borders.widths.thin",
+        "typography.fontWeights.medium",
+        "typography.lineHeights.normal"
+      ],
+      "hasHaptics": true,
+      "version": "1.0.0",
+      "checksum": "b2c9af0de0c2755f4e3226e3733be0ed",
+      "downloadUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/button/component.tsx.template",
+      "metadataUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/button/component.json"
+    },
+    {
+      "name": "card",
+      "displayName": "Card",
+      "description": "Container component with elevation and customizable styling",
+      "category": "layout",
+      "dependencies": [],
+      "requiredProviders": [
+        "ThemeProvider"
+      ],
+      "files": [
+        "component.tsx.template"
+      ],
+      "exports": [
+        "CardVariant",
+        "CardSize",
+        "CardProps",
+        "Card"
+      ],
+      "variants": [
+        "default",
+        "elevated",
+        "outline",
+        "glass"
+      ],
+      "sizes": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "tokenUsage": [
+        "shadows.md",
+        "borders.widths.thin",
+        "shadows.sm",
+        "radii.sm",
+        "radii.lg",
+        "radii.md",
+        "typography.fontSizes.lg",
+        "typography.fontWeights.semiBold",
+        "typography.fontSizes.sm",
+        "typography.fontSizes.md",
+        "typography.lineHeights.relaxed",
+        "borders.widths.hairline"
+      ],
+      "hasHaptics": false,
+      "version": "1.0.0",
+      "checksum": "995181c0dbdaf117769e60ff2e2402e7",
+      "downloadUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/card/component.tsx.template",
+      "metadataUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/card/component.json"
+    },
+    {
+      "name": "gradientbutton",
+      "displayName": "Gradient Button",
+      "description": "Button component with gradient backgrounds and advanced styling",
+      "category": "forms",
+      "dependencies": [
+        "expo-linear-gradient"
+      ],
+      "requiredProviders": [
+        "HapticsProvider",
+        "ThemeProvider"
+      ],
+      "files": [
+        "component.tsx.template"
+      ],
+      "exports": [
+        "GradientButtonVariant",
+        "GradientButtonType",
+        "GradientButtonSize",
+        "GradientButtonProps",
+        "GradientButton"
+      ],
+      "variants": [
+        "default",
+        "subtle",
+        "vibrant"
+      ],
+      "sizes": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "tokenUsage": [
+        "colors.gradients[gradientType",
+        "colors.gradients]",
+        "colors.gradients.primary.default",
+        "typography.fontSizes.xs",
+        "iconSizes.xs",
+        "typography.fontSizes.sm",
+        "iconSizes.sm",
+        "typography.fontSizes.lg",
+        "iconSizes.lg",
+        "typography.fontSizes.xl",
+        "iconSizes.xl",
+        "typography.fontSizes.md",
+        "iconSizes.md",
+        "radii.md",
+        "typography.fontWeights.medium",
+        "typography.lineHeights.normal"
+      ],
+      "hasHaptics": true,
+      "version": "1.0.0",
+      "checksum": "1b9fec02c3657dfeecbc0a287ac1a27c",
+      "downloadUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/gradientbutton/component.tsx.template",
+      "metadataUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/gradientbutton/component.json"
+    },
+    {
+      "name": "input",
+      "displayName": "Input",
+      "description": "Text input component with validation states and helper text",
+      "category": "forms",
+      "dependencies": [],
+      "requiredProviders": [
+        "ThemeProvider"
+      ],
+      "files": [
+        "component.tsx.template"
+      ],
+      "exports": [
+        "InputVariant",
+        "InputSize",
+        "InputProps",
+        "Input"
+      ],
+      "variants": [
+        "default",
+        "ghost",
+        "underline"
+      ],
+      "sizes": [
+        "xs",
+        "sm",
+        "md",
+        "lg"
+      ],
+      "tokenUsage": [
+        "typography.fontSizes.xs",
+        "typography.fontSizes.sm",
+        "typography.fontSizes.lg",
+        "typography.fontSizes.md",
+        "radii.sm",
+        "borders.widths.thin",
+        "typography.fontWeights.medium"
+      ],
+      "hasHaptics": false,
+      "version": "1.0.0",
+      "checksum": "4917a046744ed6dee44b6a4c0be7573f",
+      "downloadUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/input/component.tsx.template",
+      "metadataUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/input/component.json"
+    },
+    {
+      "name": "slider",
+      "displayName": "Slider",
+      "description": "Range input control with customizable styling",
+      "category": "forms",
+      "dependencies": [
+        "@react-native-community/slider"
+      ],
+      "requiredProviders": [
+        "HapticsProvider",
+        "ThemeProvider"
+      ],
+      "files": [
+        "component.tsx.template"
+      ],
+      "exports": [
+        "SliderVariant",
+        "SliderSize",
+        "SliderProps",
+        "Slider"
+      ],
+      "variants": [
+        "default",
+        "success",
+        "destructive",
+        "secondary"
+      ],
+      "sizes": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "tokenUsage": [
+        "colors.minimumTrackTintColor",
+        "colors.maximumTrackTintColor",
+        "colors.thumbTintColor"
+      ],
+      "hasHaptics": true,
+      "version": "1.0.0",
+      "checksum": "6265561ee432f4ce0d1ba94c8524504e",
+      "downloadUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/slider/component.tsx.template",
+      "metadataUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/slider/component.json"
+    },
+    {
+      "name": "spinner",
+      "displayName": "Spinner",
+      "description": "Loading indicators with multiple styles and sizes",
+      "category": "loading",
+      "dependencies": [],
+      "requiredProviders": [
+        "ThemeProvider"
+      ],
+      "files": [
+        "component.tsx.template"
+      ],
+      "exports": [
+        "SpinnerSize",
+        "SpinnerProps",
+        "Spinner",
+        "DotSpinner"
+      ],
+      "variants": [],
+      "sizes": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "tokenUsage": [
+        "iconSizes.xs",
+        "iconSizes.sm",
+        "iconSizes.lg",
+        "iconSizes.xl",
+        "iconSizes.md"
+      ],
+      "hasHaptics": false,
+      "version": "1.0.0",
+      "checksum": "b873267adc9bef6ff2db6b1a448e0363",
+      "downloadUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/spinner/component.tsx.template",
+      "metadataUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/spinner/component.json"
+    },
+    {
+      "name": "switch",
+      "displayName": "Switch",
+      "description": "Toggle control with smooth animations and haptic feedback",
+      "category": "forms",
+      "dependencies": [],
+      "requiredProviders": [
+        "HapticsProvider",
+        "ThemeProvider"
+      ],
+      "files": [
+        "component.tsx.template"
+      ],
+      "exports": [
+        "SwitchVariant",
+        "SwitchSize",
+        "SwitchProps",
+        "Switch"
+      ],
+      "variants": [
+        "default",
+        "primary",
+        "success",
+        "destructive"
+      ],
+      "sizes": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "tokenUsage": [
+        "typography.fontSizes.sm",
+        "typography.fontWeights.medium",
+        "typography.lineHeights.normal"
+      ],
+      "hasHaptics": true,
+      "version": "1.0.0",
+      "checksum": "a067dcaae9ef629e2cf5fb4476931693",
+      "downloadUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/switch/component.tsx.template",
+      "metadataUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/switch/component.json"
+    },
+    {
+      "name": "toast",
+      "displayName": "Toast",
+      "description": "Overlay notifications with positioning and animations",
+      "category": "feedback",
+      "dependencies": [],
+      "requiredProviders": [
+        "HapticsProvider",
+        "ThemeProvider"
+      ],
+      "files": [
+        "component.tsx.template"
+      ],
+      "exports": [
+        "ToastVariant",
+        "ToastPosition",
+        "ToastProps",
+        "Toast",
+        "ToastContextValue",
+        "useToast",
+        "ToastProvider"
+      ],
+      "variants": [
+        "default",
+        "success",
+        "error",
+        "info",
+        "warning"
+      ],
+      "sizes": [],
+      "tokenUsage": [
+        "radii.md",
+        "typography.fontSizes.md",
+        "typography.fontWeights.semiBold",
+        "typography.fontSizes.sm",
+        "typography.lineHeights.relaxed",
+        "typography.fontWeights.medium",
+        "typography.fontSizes.lg",
+        "typography.fontWeights.bold"
+      ],
+      "hasHaptics": true,
+      "version": "1.0.0",
+      "checksum": "3ccb4e1882009f61a9fafbe3c2f36357",
+      "downloadUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/toast/component.tsx.template",
+      "metadataUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/toast/component.json"
+    },
+    {
+      "name": "toggle",
+      "displayName": "Toggle",
+      "description": "Button-like toggle component with pressed states",
+      "category": "forms",
+      "dependencies": [],
+      "requiredProviders": [
+        "HapticsProvider",
+        "ThemeProvider"
+      ],
+      "files": [
+        "component.tsx.template"
+      ],
+      "exports": [
+        "ToggleVariant",
+        "ToggleSize",
+        "ToggleProps",
+        "Toggle"
+      ],
+      "variants": [
+        "default",
+        "primary",
+        "success",
+        "destructive"
+      ],
+      "sizes": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "tokenUsage": [
+        "typography.fontSizes.xs",
+        "typography.fontSizes.lg",
+        "typography.fontSizes.sm",
+        "radii.md",
+        "borders.widths.thin",
+        "typography.fontWeights.medium"
+      ],
+      "hasHaptics": true,
+      "version": "1.0.0",
+      "checksum": "6ec6c199c126964a7d863d23bc454d56",
+      "downloadUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/toggle/component.tsx.template",
+      "metadataUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/toggle/component.json"
+    }
+  ],
+  "stats": {
+    "totalComponents": 11,
+    "categories": [
+      "feedback",
+      "forms",
+      "layout",
+      "loading"
+    ],
+    "totalDependencies": 2
+  }
+}

@@ -1,0 +1,53 @@
+export const typography = {
+  fonts: {
+    sans: 'System',
+    serif: 'Georgia',
+    mono: 'Courier New',
+    heading: 'System',
+    body: 'System',
+  },
+  fontSizes: {
+    xs: 12,
+    sm: 14,
+    md: 16,
+    lg: 18,
+    xl: 20,
+    '2xl': 24,
+    '3xl': 30,
+    '4xl': 36,
+    '5xl': 48,
+    '6xl': 60,
+  },
+  fontWeights: {
+    thin: '100',
+    extraLight: '200',
+    light: '300',
+    normal: '400',
+    medium: '500',
+    semiBold: '600',
+    bold: '700',
+    extraBold: '800',
+    black: '900',
+  },
+  lineHeights: {
+    tight: 1.2,
+    snug: 1.35,
+    normal: 1.5,
+    relaxed: 1.625,
+    loose: 2,
+  },
+  letterSpacings: {
+    tighter: -0.5,
+    tight: -0.25,
+    normal: 0,
+    wide: 0.25,
+    wider: 0.5,
+    widest: 1,
+  },
+} as const;
+
+export type FontFamily = keyof typeof typography.fonts;
+export type FontSize = keyof typeof typography.fontSizes;
+export type FontWeight = keyof typeof typography.fontWeights;
+export type LineHeight = keyof typeof typography.lineHeights;
+export type LetterSpacing = keyof typeof typography.letterSpacings;

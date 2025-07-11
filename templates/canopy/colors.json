@@ -1,0 +1,122 @@
+{
+  "light": {
+    "primary": "#2a5dff",
+    "primaryForeground": "#ffffff",
+    "secondary": "#64748b",
+    "secondaryForeground": "#ffffff",
+    "background": "#fefefe",
+    "foreground": "#1a1a1a",
+    "card": "#ffffff",
+    "cardForeground": "#1a1a1a",
+    "muted": "#f1f5f9",
+    "mutedForeground": "#64748b",
+    "accent": "#f1f5f9",
+    "accentForeground": "#1a1a1a",
+    "destructive": "#ef4444",
+    "destructiveForeground": "#ffffff",
+    "border": "#e2e8f0",
+    "input": "#e2e8f0",
+    "ring": "#2a5dff",
+    "success": "#22c55e",
+    "successForeground": "#ffffff",
+    "warning": "#f59e0b",
+    "warningForeground": "#1a1a1a",
+    "info": "#0ea5e9",
+    "infoForeground": "#ffffff"
+  },
+  "dark": {
+    "primary": "#3b7fff",
+    "primaryForeground": "#ffffff",
+    "secondary": "#475569",
+    "secondaryForeground": "#ffffff",
+    "background": "#0a0a0a",
+    "foreground": "#fafafa",
+    "card": "#1a1a1a",
+    "cardForeground": "#fafafa",
+    "muted": "#1a1a1a",
+    "mutedForeground": "#a1a1aa",
+    "accent": "#1a1a1a",
+    "accentForeground": "#fafafa",
+    "destructive": "#f87171",
+    "destructiveForeground": "#ffffff",
+    "border": "#27272a",
+    "input": "#27272a",
+    "ring": "#3b7fff",
+    "success": "#4ade80",
+    "successForeground": "#ffffff",
+    "warning": "#facc15",
+    "warningForeground": "#1a1a1a",
+    "info": "#38bdf8",
+    "infoForeground": "#ffffff"
+  },
+  "gradients": {
+    "primary": {
+      "default": [
+        "#2a5dff",
+        "#1d4ed8"
+      ],
+      "subtle": [
+        "#eff6ff",
+        "#dbeafe"
+      ],
+      "vibrant": [
+        "#60a5fa",
+        "#1e40af"
+      ]
+    },
+    "secondary": {
+      "default": [
+        "#64748b",
+        "#475569"
+      ],
+      "subtle": [
+        "#f8fafc",
+        "#e2e8f0"
+      ],
+      "vibrant": [
+        "#94a3b8",
+        "#334155"
+      ]
+    },
+    "accent": {
+      "default": [
+        "#8b5cf6",
+        "#7c3aed"
+      ],
+      "subtle": [
+        "#faf5ff",
+        "#f3e8ff"
+      ],
+      "vibrant": [
+        "#a855f7",
+        "#6b21a8"
+      ]
+    }
+  },
+  "shades": {
+    "primary": {
+      "50": "#eff6ff",
+      "100": "#dbeafe",
+      "200": "#bfdbfe",
+      "300": "#93c5fd",
+      "400": "#60a5fa",
+      "500": "#2a5dff",
+      "600": "#1d4ed8",
+      "700": "#1e40af",
+      "800": "#1e3a8a",
+      "900": "#1e3a8a"
+    },
+    "secondary": {
+      "50": "#f8fafc",
+      "100": "#f1f5f9",
+      "200": "#e2e8f0",
+      "300": "#cbd5e1",
+      "400": "#94a3b8",
+      "500": "#64748b",
+      "600": "#475569",
+      "700": "#334155",
+      "800": "#1e293b",
+      "900": "#0f172a"
+    }
+  }
+}

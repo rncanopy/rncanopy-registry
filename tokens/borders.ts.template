@@ -1,0 +1,18 @@
+export const borders = {
+  widths: {
+    none: 0,
+    hairline: 0.5,
+    thin: 1,
+    normal: 1.5,
+    thick: 2,
+    extraThick: 4,
+  },
+  styles: {
+    solid: 'solid',
+    dashed: 'dashed',
+    dotted: 'dotted',
+  },
+} as const;
+
+export type BorderWidth = keyof typeof borders.widths;
+export type BorderStyle = keyof typeof borders.styles;

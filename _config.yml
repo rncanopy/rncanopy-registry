@@ -1,0 +1,47 @@
+# GitHub Pages Configuration for RNCanopy Registry
+
+title: "RNCanopy Registry"
+description: "Official component registry for RNCanopy React Native component library"
+url: "https://registry.rncanopy.dev"
+baseurl: ""
+
+# Theme
+theme: minima
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+# Include files that start with underscore
+include:
+  - _headers
+  - _redirects
+
+# Exclude files from build
+exclude:
+  - node_modules/
+  - scripts/
+  - package.json
+  - package-lock.json
+  - README.md
+  - .gitignore
+
+# Custom headers for API files
+defaults:
+  - scope:
+      path: "api"
+    values:
+      layout: null
+  - scope:
+      path: "components"
+    values:
+      layout: null
+  - scope:
+      path: "templates"  
+    values:
+      layout: null
+  - scope:
+      path: "providers"
+    values:
+      layout: null

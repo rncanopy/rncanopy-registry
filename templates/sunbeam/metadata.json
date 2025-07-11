@@ -1,0 +1,77 @@
+{
+  "name": "sunbeam",
+  "displayName": "☀️ Sunbeam",
+  "description": "Warm, light-friendly UI with organic curves and spacious layout - perfect for wellness and lifestyle apps",
+  "author": "RNCanopy Team",
+  "version": "1.0.0",
+  "lastUpdated": "2025-07-11T17:37:04.024Z",
+  "personality": {
+    "mood": "warm",
+    "spacing": "spacious",
+    "roundness": "organic",
+    "elevation": "soft"
+  },
+  "preview": {
+    "primary": "#f59e0b",
+    "secondary": "#84cc16",
+    "background": "#fffef7",
+    "surface": "#fefce8",
+    "borderRadius": 24,
+    "shadowIntensity": "light"
+  },
+  "tokenFiles": [
+    {
+      "type": "colors",
+      "url": "https://raw.githubusercontent.com/rncanopy/registry/main/templates/sunbeam/colors.json",
+      "checksum": "9a4c0c7c40c5e23102e6e8edb3c1ccb2"
+    },
+    {
+      "type": "radii",
+      "url": "https://raw.githubusercontent.com/rncanopy/registry/main/templates/sunbeam/radii.json",
+      "checksum": "c5125c52358ebd89796cc047eb3f5942"
+    },
+    {
+      "type": "spacing",
+      "url": "https://raw.githubusercontent.com/rncanopy/registry/main/templates/sunbeam/spacing.json",
+      "checksum": "4869e1aec704b06b19d2db80a9be0d39"
+    },
+    {
+      "type": "typography",
+      "url": "https://raw.githubusercontent.com/rncanopy/registry/main/templates/sunbeam/typography.json",
+      "checksum": "ee74a77a9ed24264ab3e3c20d4e4e5d2"
+    },
+    {
+      "type": "shadows",
+      "url": "https://raw.githubusercontent.com/rncanopy/registry/main/templates/sunbeam/shadows.json",
+      "checksum": "9ec30e21a8dbc276bb4a057b2935a22f"
+    },
+    {
+      "type": "borders",
+      "url": "https://raw.githubusercontent.com/rncanopy/registry/main/templates/sunbeam/borders.json",
+      "checksum": "424b279ca69de34bc11c4a511923b197"
+    },
+    {
+      "type": "sizes",
+      "url": "https://raw.githubusercontent.com/rncanopy/registry/main/templates/sunbeam/sizes.json",
+      "checksum": "2d98c0f84b6de68ce24d0b2fa0b35a30"
+    },
+    {
+      "type": "durations",
+      "url": "https://raw.githubusercontent.com/rncanopy/registry/main/templates/sunbeam/durations.json",
+      "checksum": "70e149ad58b76a1c082771037dec1f76"
+    },
+    {
+      "type": "easings",
+      "url": "https://raw.githubusercontent.com/rncanopy/registry/main/templates/sunbeam/easings.json",
+      "checksum": "9e17910f13bb1aebc4438edaf9e8a1dd"
+    },
+    {
+      "type": "opacity",
+      "url": "https://raw.githubusercontent.com/rncanopy/registry/main/templates/sunbeam/opacity.json",
+      "checksum": "73e0b30ab3f3f3e3b27341525a5c151f"
+    }
+  ],
+  "templateUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/templates/sunbeam/template.json",
+  "metadataUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/templates/sunbeam/metadata.json",
+  "checksum": "8214deb1087ab9684eefa92ed00cae9d"
+}

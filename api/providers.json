@@ -1,0 +1,52 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2025-07-11T17:37:04.024Z",
+  "baseUrl": "https://raw.githubusercontent.com/rncanopy/registry/main",
+  "providers": [
+    {
+      "name": "hapticsprovider",
+      "displayName": "HapticsProvider",
+      "description": "HapticsProvider context provider",
+      "dependencies": [
+        "expo-haptics"
+      ],
+      "exports": [
+        "HapticsProvider",
+        "useHaptics"
+      ],
+      "version": "1.0.0",
+      "checksum": "c044b23f3f6e038b2454ecaca131e1a6",
+      "downloadUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/providers/HapticsProvider.tsx.template"
+    },
+    {
+      "name": "rncanopyprovider",
+      "displayName": "RNCanopyProvider",
+      "description": "RNCanopyProvider context provider",
+      "dependencies": [],
+      "exports": [
+        "RNCanopyProvider"
+      ],
+      "version": "1.0.0",
+      "checksum": "4f603dbd96b81ce9ba1971fbb2a98ac8",
+      "downloadUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/providers/RNCanopyProvider.tsx.template"
+    },
+    {
+      "name": "themeprovider",
+      "displayName": "ThemeProvider",
+      "description": "ThemeProvider context provider",
+      "dependencies": [],
+      "exports": [
+        "ThemeProvider",
+        "useTheme",
+        "useColorMode",
+        "useColors"
+      ],
+      "version": "1.0.0",
+      "checksum": "748cbdad2bf37f52b99cf958696e9a44",
+      "downloadUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/providers/ThemeProvider.tsx.template"
+    }
+  ],
+  "stats": {
+    "totalProviders": 3
+  }
+}

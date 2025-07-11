@@ -1,0 +1,16 @@
+export const zIndices = {
+  auto: 'auto',
+  base: 0,
+  below: -1,
+  dropdown: 10,
+  sticky: 20,
+  banner: 30,
+  overlay: 40,
+  modal: 50,
+  popover: 60,
+  tooltip: 70,
+  toast: 80,
+  maximum: 999,
+} as const;
+
+export type ZIndexToken = keyof typeof zIndices;

@@ -1,0 +1,226 @@
+import React from 'react';
+import { 
+  TouchableOpacity, 
+  Text, 
+  StyleSheet, 
+  View,
+  TouchableOpacityProps 
+} from 'react-native';
+import { useTheme } from './providers/ThemeProvider';
+import { useHaptics } from './providers/HapticsProvider';
+import { Spinner, DotSpinner } from './Spinner';
+import { 
+  spacing, 
+  radii, 
+  borders, 
+  typography, 
+  iconSizes, 
+  opacity 
+} from './constants/ui';
+
+export type ButtonVariant = 'default' | 'secondary' | 'outline' | 'ghost' | 'destructive' | 'success';
+export type ButtonSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+
+export interface ButtonProps extends Omit<TouchableOpacityProps, 'style'> {
+  variant?: ButtonVariant;
+  size?: ButtonSize;
+  loading?: boolean;
+  disabled?: boolean;
+  leftIcon?: React.ReactNode;
+  rightIcon?: React.ReactNode;
+  children?: React.ReactNode;
+  enableHaptics?: boolean;
+  style?: TouchableOpacityProps['style'];
+  spinnerType?: 'default' | 'dots';
+  spinnerColor?: string;
+}
+
+export function Button({
+  variant = 'default',
+  size = 'md',
+  loading = false,
+  disabled = false,
+  leftIcon,
+  rightIcon,
+  children,
+  enableHaptics = true,
+  style,
+  spinnerType = 'default',
+  spinnerColor,
+  onPress,
+  ...props
+}: ButtonProps) {
+  const { currentColors } = useTheme();
+  const { triggerHaptic } = useHaptics();
+
+  const handlePress = async (event: any) => {
+    if (disabled || loading) return;
+    
+    if (enableHaptics) {
+      await triggerHaptic('impactLight');
+    }
+    
+    onPress?.(event);
+  };
+
+  const getVariantStyles = () => {
+    switch (variant) {
+      case 'secondary':
+        return {
+          backgroundColor: currentColors.secondary,
+          borderColor: currentColors.secondary,
+          textColor: currentColors.secondaryForeground,
+        };
+      case 'outline':
+        return {
+          backgroundColor: 'transparent',
+          borderColor: currentColors.primary,
+          textColor: currentColors.primary,
+        };
+      case 'ghost':
+        return {
+          backgroundColor: 'transparent',
+          borderColor: 'transparent',
+          textColor: currentColors.primary,
+        };
+      case 'destructive':
+        return {
+          backgroundColor: currentColors.destructive,
+          borderColor: currentColors.destructive,
+          textColor: currentColors.destructiveForeground,
+        };
+      case 'success':
+        return {
+          backgroundColor: currentColors.success,
+          borderColor: currentColors.success,
+          textColor: currentColors.successForeground,
+        };
+      default:
+        return {
+          backgroundColor: currentColors.primary,
+          borderColor: currentColors.primary,
+          textColor: currentColors.primaryForeground,
+        };
+    }
+  };
+
+  const getSizeStyles = () => {
+    switch (size) {
+      case 'xs':
+        return {
+          paddingVertical: spacing[1],
+          paddingHorizontal: spacing[2],
+          fontSize: typography.fontSizes.xs,
+          iconSize: iconSizes.xs,
+        };
+      case 'sm':
+        return {
+          paddingVertical: spacing[1.5],
+          paddingHorizontal: spacing[3],
+          fontSize: typography.fontSizes.sm,
+          iconSize: iconSizes.sm,
+        };
+      case 'lg':
+        return {
+          paddingVertical: spacing[3],
+          paddingHorizontal: spacing[5],
+          fontSize: typography.fontSizes.lg,
+          iconSize: iconSizes.lg,
+        };
+      case 'xl':
+        return {
+          paddingVertical: spacing[4],
+          paddingHorizontal: spacing[6],
+          fontSize: typography.fontSizes.xl,
+          iconSize: iconSizes.xl,
+        };
+      default: // md
+        return {
+          paddingVertical: spacing[2.5],
+          paddingHorizontal: spacing[4],
+          fontSize: typography.fontSizes.md,
+          iconSize: iconSizes.md,
+        };
+    }
+  };
+
+  const variantStyles = getVariantStyles();
+  const sizeStyles = getSizeStyles();
+
+  const buttonStyles = StyleSheet.create({
+    container: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
+      borderRadius: radii.md,
+      borderWidth: borders.widths.thin,
+      gap: spacing[2],
+      backgroundColor: disabled 
+        ? currentColors.disabled 
+        : variantStyles.backgroundColor,
+      borderColor: disabled 
+        ? currentColors.disabled 
+        : variantStyles.borderColor,
+      paddingVertical: sizeStyles.paddingVertical,
+      paddingHorizontal: sizeStyles.paddingHorizontal,
+      opacity: loading ? opacity[60] : 1,
+    },
+    text: {
+      fontSize: sizeStyles.fontSize,
+      fontWeight: typography.fontWeights.medium,
+      lineHeight: typography.lineHeights.normal * sizeStyles.fontSize,
+      color: disabled 
+        ? currentColors.disabledForeground 
+        : variantStyles.textColor,
+      textAlign: 'center',
+    },
+    iconContainer: {
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+  });
+
+  return (
+    <TouchableOpacity
+      style={[buttonStyles.container, style]}
+      onPress={handlePress}
+      disabled={disabled || loading}
+      activeOpacity={opacity[80]}
+      {...props}
+    >
+      {loading && (
+        <View style={buttonStyles.iconContainer}>
+          {spinnerType === 'dots' ? (
+            <DotSpinner 
+              size={size} 
+              color={spinnerColor || variantStyles.textColor} 
+            />
+          ) : (
+            <Spinner 
+              size={size} 
+              color={spinnerColor || variantStyles.textColor} 
+            />
+          )}
+        </View>
+      )}
+      
+      {!loading && leftIcon && (
+        <View style={buttonStyles.iconContainer}>
+          {leftIcon}
+        </View>
+      )}
+      
+      {children && (
+        <Text style={buttonStyles.text}>
+          {children}
+        </Text>
+      )}
+      
+      {!loading && rightIcon && (
+        <View style={buttonStyles.iconContainer}>
+          {rightIcon}
+        </View>
+      )}
+    </TouchableOpacity>
+  );
+}

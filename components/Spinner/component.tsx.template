@@ -1,0 +1,233 @@
+import React, { useEffect, useRef } from 'react';
+import { 
+  View, 
+  Animated, 
+  StyleSheet, 
+  ViewStyle 
+} from 'react-native';
+import { useTheme } from './providers/ThemeProvider';
+import { iconSizes, opacity } from './constants/ui';
+
+export type SpinnerSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+
+export interface SpinnerProps {
+  size?: SpinnerSize;
+  color?: string;
+  style?: ViewStyle;
+  strokeWidth?: number;
+  duration?: number;
+}
+
+export function Spinner({
+  size = 'md',
+  color,
+  style,
+  strokeWidth = 2,
+  duration = 1000,
+}: SpinnerProps) {
+  const { currentColors } = useTheme();
+  const spinValue = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    const spin = () => {
+      spinValue.setValue(0);
+      Animated.timing(spinValue, {
+        toValue: 1,
+        duration: duration,
+        useNativeDriver: true,
+      }).start(() => spin());
+    };
+    
+    spin();
+    
+    return () => {
+      spinValue.stopAnimation();
+    };
+  }, [spinValue, duration]);
+
+  const getSpinnerSize = () => {
+    switch (size) {
+      case 'xs':
+        return iconSizes.xs;
+      case 'sm':
+        return iconSizes.sm;
+      case 'lg':
+        return iconSizes.lg;
+      case 'xl':
+        return iconSizes.xl;
+      default: // md
+        return iconSizes.md;
+    }
+  };
+
+  const spinnerSize = getSpinnerSize();
+  const spinnerColor = color || currentColors.primary;
+
+  const spin = spinValue.interpolate({
+    inputRange: [0, 1],
+    outputRange: ['0deg', '360deg'],
+  });
+
+  const styles = StyleSheet.create({
+    container: {
+      width: spinnerSize,
+      height: spinnerSize,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    spinner: {
+      width: spinnerSize,
+      height: spinnerSize,
+      borderRadius: spinnerSize / 2,
+      borderWidth: strokeWidth,
+      borderColor: 'transparent',
+      borderTopColor: spinnerColor,
+      borderRightColor: spinnerColor,
+      borderLeftColor: spinnerColor + Math.round(opacity[30] * 255).toString(16).padStart(2, '0'), // Add transparency
+      borderBottomColor: spinnerColor + Math.round(opacity[30] * 255).toString(16).padStart(2, '0'), // Add transparency
+    },
+  });
+
+  return (
+    <View style={[styles.container, style]}>
+      <Animated.View
+        style={[
+          styles.spinner,
+          {
+            transform: [{ rotate: spin }],
+          },
+        ]}
+      />
+    </View>
+  );
+}
+
+// Alternative dot-based spinner
+export function DotSpinner({
+  size = 'md',
+  color,
+  style,
+  duration = 1200,
+}: SpinnerProps) {
+  const { currentColors } = useTheme();
+  const dot1 = useRef(new Animated.Value(0)).current;
+  const dot2 = useRef(new Animated.Value(0)).current;
+  const dot3 = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    const animate = () => {
+      const animations = [
+        Animated.timing(dot1, {
+          toValue: 1,
+          duration: duration / 3,
+          useNativeDriver: true,
+        }),
+        Animated.timing(dot2, {
+          toValue: 1,
+          duration: duration / 3,
+          useNativeDriver: true,
+        }),
+        Animated.timing(dot3, {
+          toValue: 1,
+          duration: duration / 3,
+          useNativeDriver: true,
+        }),
+      ];
+
+      const resetAnimations = [
+        Animated.timing(dot1, {
+          toValue: 0,
+          duration: 0,
+          useNativeDriver: true,
+        }),
+        Animated.timing(dot2, {
+          toValue: 0,
+          duration: 0,
+          useNativeDriver: true,
+        }),
+        Animated.timing(dot3, {
+          toValue: 0,
+          duration: 0,
+          useNativeDriver: true,
+        }),
+      ];
+
+      Animated.sequence([
+        ...animations,
+        Animated.parallel(resetAnimations),
+      ]).start(() => animate());
+    };
+
+    animate();
+
+    return () => {
+      dot1.stopAnimation();
+      dot2.stopAnimation();
+      dot3.stopAnimation();
+    };
+  }, [dot1, dot2, dot3, duration]);
+
+  const getSpinnerSize = () => {
+    switch (size) {
+      case 'xs':
+        return iconSizes.xs;
+      case 'sm':
+        return iconSizes.sm;
+      case 'lg':
+        return iconSizes.lg;
+      case 'xl':
+        return iconSizes.xl;
+      default: // md
+        return iconSizes.md;
+    }
+  };
+
+  const spinnerSize = getSpinnerSize();
+  const dotSize = spinnerSize / 4;
+  const spinnerColor = color || currentColors.primary;
+
+  const createDotStyle = (animatedValue: Animated.Value) => ({
+    opacity: animatedValue.interpolate({
+      inputRange: [0, 1],
+      outputRange: [opacity[30], opacity[100]],
+    }),
+    transform: [
+      {
+        scale: animatedValue.interpolate({
+          inputRange: [0, 1],
+          outputRange: [opacity[80], opacity[100] + 0.2],
+        }),
+      },
+    ],
+  });
+
+  const styles = StyleSheet.create({
+    container: {
+      width: spinnerSize,
+      height: spinnerSize,
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+    },
+    dot: {
+      width: dotSize,
+      height: dotSize,
+      borderRadius: dotSize / 2,
+      backgroundColor: spinnerColor,
+    },
+  });
+
+  return (
+    <View style={[styles.container, style]}>
+      <Animated.View
+        style={[styles.dot, createDotStyle(dot1)]}
+      />
+      <Animated.View
+        style={[styles.dot, createDotStyle(dot2)]}
+      />
+      <Animated.View
+        style={[styles.dot, createDotStyle(dot3)]}
+      />
+    </View>
+  );
+}

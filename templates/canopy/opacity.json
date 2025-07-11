@@ -1,0 +1,9 @@
+{
+  "invisible": 0,
+  "low": 0.25,
+  "disabled": 0.4,
+  "muted": 0.6,
+  "high": 0.8,
+  "overlay": 0.9,
+  "visible": 1
+}

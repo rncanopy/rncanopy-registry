@@ -1,0 +1,12 @@
+{
+  "name": "rncanopyprovider",
+  "displayName": "RNCanopyProvider",
+  "description": "RNCanopyProvider context provider",
+  "dependencies": [],
+  "exports": [
+    "RNCanopyProvider"
+  ],
+  "version": "1.0.0",
+  "checksum": "4f603dbd96b81ce9ba1971fbb2a98ac8",
+  "downloadUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/providers/RNCanopyProvider.tsx.template"
+}

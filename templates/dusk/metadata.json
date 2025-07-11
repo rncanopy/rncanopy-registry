@@ -1,0 +1,77 @@
+{
+  "name": "dusk",
+  "displayName": "🌙 Dusk",
+  "description": "Dark, moody palette with dramatic shadows - perfect for entertainment and gaming apps",
+  "author": "RNCanopy Team",
+  "version": "1.0.0",
+  "lastUpdated": "2025-07-11T17:37:04.024Z",
+  "personality": {
+    "mood": "dramatic",
+    "spacing": "comfortable",
+    "roundness": "rounded",
+    "elevation": "dramatic"
+  },
+  "preview": {
+    "primary": "#a855f7",
+    "secondary": "#64748b",
+    "background": "#1a1b23",
+    "surface": "#2d2e36",
+    "borderRadius": 14,
+    "shadowIntensity": "heavy"
+  },
+  "tokenFiles": [
+    {
+      "type": "colors",
+      "url": "https://raw.githubusercontent.com/rncanopy/registry/main/templates/dusk/colors.json",
+      "checksum": "d2e693a070d46ffe671a73edf8329922"
+    },
+    {
+      "type": "radii",
+      "url": "https://raw.githubusercontent.com/rncanopy/registry/main/templates/dusk/radii.json",
+      "checksum": "f375456fb5636dff9c9d07c784e9b242"
+    },
+    {
+      "type": "spacing",
+      "url": "https://raw.githubusercontent.com/rncanopy/registry/main/templates/dusk/spacing.json",
+      "checksum": "9ee0908e2e52d351449696d975308a95"
+    },
+    {
+      "type": "typography",
+      "url": "https://raw.githubusercontent.com/rncanopy/registry/main/templates/dusk/typography.json",
+      "checksum": "ae0d963e20bc4955c7816f8bde635f08"
+    },
+    {
+      "type": "shadows",
+      "url": "https://raw.githubusercontent.com/rncanopy/registry/main/templates/dusk/shadows.json",
+      "checksum": "585bd551d2e1e028736f2c7261ce1f90"
+    },
+    {
+      "type": "borders",
+      "url": "https://raw.githubusercontent.com/rncanopy/registry/main/templates/dusk/borders.json",
+      "checksum": "7912fdceadaa2be6ed7b24266bd08122"
+    },
+    {
+      "type": "sizes",
+      "url": "https://raw.githubusercontent.com/rncanopy/registry/main/templates/dusk/sizes.json",
+      "checksum": "ce68e6ba17ed39088c6c239e0888a0e1"
+    },
+    {
+      "type": "durations",
+      "url": "https://raw.githubusercontent.com/rncanopy/registry/main/templates/dusk/durations.json",
+      "checksum": "7745705e7cbead1429c3084bac99118f"
+    },
+    {
+      "type": "easings",
+      "url": "https://raw.githubusercontent.com/rncanopy/registry/main/templates/dusk/easings.json",
+      "checksum": "9e17910f13bb1aebc4438edaf9e8a1dd"
+    },
+    {
+      "type": "opacity",
+      "url": "https://raw.githubusercontent.com/rncanopy/registry/main/templates/dusk/opacity.json",
+      "checksum": "b38edd34198bb9773bd7f68535998cbf"
+    }
+  ],
+  "templateUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/templates/dusk/template.json",
+  "metadataUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/templates/dusk/metadata.json",
+  "checksum": "76c21962305feb5ff0521456a86ade34"
+}

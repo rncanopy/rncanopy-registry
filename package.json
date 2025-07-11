@@ -1,0 +1,35 @@
+{
+  "name": "@rncanopy/registry",
+  "version": "1.0.0",
+  "description": "RNCanopy component registry - templates, components, and providers",
+  "main": "api/components.json",
+  "scripts": {
+    "build": "node scripts/build-registry.js",
+    "build:colors": "node scripts/copy-from-cli.js",
+    "validate": "node scripts/validate-registry.js",
+    "test": "npm run validate",
+    "build:full": "npm run build && npm run validate",
+    "clean": "rm -rf api components templates providers tokens",
+    "rebuild": "npm run clean && npm run build:full"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rncanopy/registry"
+  },
+  "keywords": [
+    "react-native",
+    "components",
+    "design-system",
+    "registry",
+    "templates"
+  ],
+  "author": "RNCanopy Team",
+  "license": "MIT",
+  "homepage": "https://registry.rncanopy.dev",
+  "bugs": {
+    "url": "https://github.com/rncanopy/registry/issues"
+  },
+  "devDependencies": {
+    "ajv": "^8.17.1"
+  }
+}

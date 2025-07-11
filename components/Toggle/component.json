@@ -1,0 +1,44 @@
+{
+  "name": "toggle",
+  "displayName": "Toggle",
+  "description": "Button-like toggle component with pressed states",
+  "category": "forms",
+  "dependencies": [],
+  "requiredProviders": [
+    "HapticsProvider",
+    "ThemeProvider"
+  ],
+  "files": [
+    "component.tsx.template"
+  ],
+  "exports": [
+    "ToggleVariant",
+    "ToggleSize",
+    "ToggleProps",
+    "Toggle"
+  ],
+  "variants": [
+    "default",
+    "primary",
+    "success",
+    "destructive"
+  ],
+  "sizes": [
+    "sm",
+    "md",
+    "lg"
+  ],
+  "tokenUsage": [
+    "typography.fontSizes.xs",
+    "typography.fontSizes.lg",
+    "typography.fontSizes.sm",
+    "radii.md",
+    "borders.widths.thin",
+    "typography.fontWeights.medium"
+  ],
+  "hasHaptics": true,
+  "version": "1.0.0",
+  "checksum": "6ec6c199c126964a7d863d23bc454d56",
+  "downloadUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/toggle/component.tsx.template",
+  "metadataUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/toggle/component.json"
+}

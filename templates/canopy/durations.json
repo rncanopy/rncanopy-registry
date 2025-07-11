@@ -1,0 +1,7 @@
+{
+  "instant": 0,
+  "fast": 200,
+  "normal": 300,
+  "slow": 500,
+  "slower": 750
+}

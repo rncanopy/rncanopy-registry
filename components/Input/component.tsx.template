@@ -1,0 +1,205 @@
+import React, { useState } from 'react';
+import { 
+  TextInput, 
+  View, 
+  Text,
+  StyleSheet, 
+  TextInputProps,
+  ViewStyle
+} from 'react-native';
+import { useTheme } from './providers/ThemeProvider';
+import { spacing, radii, borders, typography, sizes, opacity } from './constants/ui';
+
+export type InputVariant = 'default' | 'ghost' | 'underline';
+export type InputSize = 'xs' | 'sm' | 'md' | 'lg';
+
+export interface InputProps extends TextInputProps {
+  variant?: InputVariant;
+  size?: InputSize;
+  label?: string;
+  helperText?: string;
+  errorMessage?: string;
+  isError?: boolean;
+  containerStyle?: ViewStyle;
+  inputStyle?: TextInputProps['style'];
+}
+
+export function Input({ 
+  value: controlledValue, 
+  onChangeText, 
+  variant = 'default',
+  size = 'md',
+  label,
+  helperText,
+  errorMessage,
+  isError = false,
+  containerStyle,
+  inputStyle,
+  onFocus,
+  onBlur,
+  ...props 
+}: InputProps) {
+  const { currentColors } = useTheme();
+  const [internalValue, setInternalValue] = useState('');
+  const [isFocused, setIsFocused] = useState(false);
+  
+  const isControlled = controlledValue !== undefined;
+  const value = isControlled ? controlledValue : internalValue;
+  
+  const handleChangeText = (text: string) => {
+    if (!isControlled) {
+      setInternalValue(text);
+    }
+    onChangeText?.(text);
+  };
+
+  const handleFocus = (event: any) => {
+    setIsFocused(true);
+    onFocus?.(event);
+  };
+
+  const handleBlur = (event: any) => {
+    setIsFocused(false);
+    onBlur?.(event);
+  };
+
+  const getSizeStyles = () => {
+    switch (size) {
+      case 'xs':
+        return {
+          fontSize: typography.fontSizes.xs,
+          paddingVertical: spacing[1],
+          paddingHorizontal: spacing[2],
+          height: sizes.md,
+        };
+      case 'sm':
+        return {
+          fontSize: typography.fontSizes.sm,
+          paddingVertical: spacing[1.5],
+          paddingHorizontal: spacing[2.5],
+          height: sizes.lg,
+        };
+      case 'lg':
+        return {
+          fontSize: typography.fontSizes.lg,
+          paddingVertical: spacing[2.5],
+          paddingHorizontal: spacing[4],
+          height: sizes.xl,
+        };
+      default:
+        return {
+          fontSize: typography.fontSizes.md,
+          paddingVertical: spacing[2],
+          paddingHorizontal: spacing[3],
+          height: sizes.lg,
+        };
+    }
+  };
+
+  const getVariantStyles = () => {
+    switch (variant) {
+      case 'ghost':
+        return {
+          backgroundColor: 'transparent',
+          borderWidth: 0,
+          borderBottomWidth: 0,
+          borderRadius: radii.sm,
+        };
+      case 'underline':
+        return {
+          backgroundColor: 'transparent',
+          borderWidth: 0,
+          borderBottomWidth: borders.widths.thin,
+          borderRadius: 0,
+        };
+      default:
+        return {
+          backgroundColor: currentColors.background,
+          borderWidth: borders.widths.thin,
+          borderBottomWidth: borders.widths.thin,
+          borderRadius: radii.sm,
+        };
+    }
+  };
+
+  const getBorderColor = () => {
+    if (isError || errorMessage) return currentColors.destructive;
+    if (isFocused) return currentColors.focus;
+    return currentColors.border;
+  };
+
+  const getPlaceholderColor = () => {
+    if (isError || errorMessage) return currentColors.destructive;
+    return currentColors.mutedForeground;
+  };
+
+  const sizeStyles = getSizeStyles();
+  const variantStyles = getVariantStyles();
+
+  const styles = StyleSheet.create({
+    container: {
+      width: '100%',
+    },
+    label: {
+      fontSize: typography.fontSizes.sm,
+      fontWeight: typography.fontWeights.medium,
+      color: currentColors.foreground,
+      marginBottom: spacing[1],
+    },
+    input: {
+      ...sizeStyles,
+      ...variantStyles,
+      borderColor: getBorderColor(),
+      color: currentColors.foreground,
+      ...(isFocused && variant !== 'ghost' && {
+        shadowColor: currentColors.focus,
+        shadowOffset: { width: 0, height: 0 },
+        shadowOpacity: opacity[20],
+        shadowRadius: spacing[1],
+        elevation: spacing[0.5],
+      }),
+    },
+    helperText: {
+      fontSize: typography.fontSizes.xs,
+      color: currentColors.mutedForeground,
+      marginTop: spacing[1],
+    },
+    errorMessage: {
+      fontSize: typography.fontSizes.xs,
+      color: currentColors.destructive,
+      marginTop: spacing[1],
+    },
+  });
+
+  return (
+    <View style={[styles.container, containerStyle]}>
+      {label && (
+        <Text style={styles.label}>
+          {label}
+        </Text>
+      )}
+      
+      <TextInput
+        {...props}
+        style={[styles.input, inputStyle]}
+        value={value}
+        onChangeText={handleChangeText}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        placeholderTextColor={getPlaceholderColor()}
+      />
+      
+      {errorMessage && (
+        <Text style={styles.errorMessage}>
+          {errorMessage}
+        </Text>
+      )}
+      
+      {helperText && !errorMessage && (
+        <Text style={styles.helperText}>
+          {helperText}
+        </Text>
+      )}
+    </View>
+  );
+}

@@ -1,0 +1,43 @@
+{
+  "name": "slider",
+  "displayName": "Slider",
+  "description": "Range input control with customizable styling",
+  "category": "forms",
+  "dependencies": [
+    "@react-native-community/slider"
+  ],
+  "requiredProviders": [
+    "HapticsProvider",
+    "ThemeProvider"
+  ],
+  "files": [
+    "component.tsx.template"
+  ],
+  "exports": [
+    "SliderVariant",
+    "SliderSize",
+    "SliderProps",
+    "Slider"
+  ],
+  "variants": [
+    "default",
+    "success",
+    "destructive",
+    "secondary"
+  ],
+  "sizes": [
+    "sm",
+    "md",
+    "lg"
+  ],
+  "tokenUsage": [
+    "colors.minimumTrackTintColor",
+    "colors.maximumTrackTintColor",
+    "colors.thumbTintColor"
+  ],
+  "hasHaptics": true,
+  "version": "1.0.0",
+  "checksum": "6265561ee432f4ce0d1ba94c8524504e",
+  "downloadUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/slider/component.tsx.template",
+  "metadataUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/slider/component.json"
+}

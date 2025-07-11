@@ -1,0 +1,48 @@
+{
+  "name": "alert",
+  "displayName": "Alert",
+  "description": "Inline feedback messages with multiple variants",
+  "category": "feedback",
+  "dependencies": [],
+  "requiredProviders": [
+    "ThemeProvider"
+  ],
+  "files": [
+    "component.tsx.template"
+  ],
+  "exports": [
+    "AlertVariant",
+    "AlertSize",
+    "AlertProps",
+    "Alert"
+  ],
+  "variants": [
+    "default",
+    "success",
+    "warning",
+    "destructive",
+    "info"
+  ],
+  "sizes": [
+    "sm",
+    "md"
+  ],
+  "tokenUsage": [
+    "typography.fontSizes.sm",
+    "typography.fontSizes.xs",
+    "typography.fontSizes.md",
+    "borders.widths.thin",
+    "radii.md",
+    "iconSizes.md",
+    "typography.fontWeights.bold",
+    "typography.fontWeights.semiBold",
+    "typography.lineHeights.snug",
+    "typography.lineHeights.relaxed",
+    "iconSizes.sm"
+  ],
+  "hasHaptics": false,
+  "version": "1.0.0",
+  "checksum": "4cb190b3c190d669121580d753e27209",
+  "downloadUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/alert/component.tsx.template",
+  "metadataUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/alert/component.json"
+}

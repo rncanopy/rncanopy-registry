@@ -1,0 +1,307 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "RNCanopy Complete Template Schema",
+  "description": "Comprehensive template definition with all customizable design tokens",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$",
+      "description": "Template identifier (kebab-case)"
+    },
+    "displayName": {
+      "type": "string",
+      "description": "Human-readable template name with emoji"
+    },
+    "description": {
+      "type": "string",
+      "description": "Template description and use cases"
+    },
+    "author": {
+      "type": "string",
+      "description": "Template author"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Semantic version"
+    },
+    "personality": {
+      "type": "object",
+      "description": "Template design characteristics",
+      "properties": {
+        "mood": {
+          "type": "string",
+          "enum": ["minimal", "warm", "professional", "playful", "dramatic", "organic"]
+        },
+        "spacing": {
+          "type": "string", 
+          "enum": ["compact", "comfortable", "spacious"]
+        },
+        "roundness": {
+          "type": "string",
+          "enum": ["sharp", "rounded", "organic"]
+        },
+        "elevation": {
+          "type": "string",
+          "enum": ["flat", "soft", "dramatic"]
+        }
+      },
+      "required": ["mood", "spacing", "roundness", "elevation"]
+    },
+    "tokens": {
+      "type": "object",
+      "description": "Complete design token system",
+      "properties": {
+        "colors": {
+          "type": "object",
+          "description": "Color system with light/dark modes",
+          "properties": {
+            "light": {
+              "type": "object",
+              "patternProperties": {
+                "^[a-zA-Z][a-zA-Z0-9]*$": {
+                  "type": "string",
+                  "pattern": "^#[0-9A-Fa-f]{6}$|^rgba?\\([^)]+\\)$"
+                }
+              }
+            },
+            "dark": {
+              "type": "object", 
+              "patternProperties": {
+                "^[a-zA-Z][a-zA-Z0-9]*$": {
+                  "type": "string",
+                  "pattern": "^#[0-9A-Fa-f]{6}$|^rgba?\\([^)]+\\)$"
+                }
+              }
+            },
+            "gradients": {
+              "type": "object",
+              "patternProperties": {
+                "^[a-zA-Z][a-zA-Z0-9]*$": {
+                  "type": "object",
+                  "patternProperties": {
+                    "^[a-zA-Z][a-zA-Z0-9]*$": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "pattern": "^#[0-9A-Fa-f]{6}$"
+                      },
+                      "minItems": 2
+                    }
+                  }
+                }
+              }
+            },
+            "shades": {
+              "type": "object",
+              "patternProperties": {
+                "^[a-zA-Z][a-zA-Z0-9]*$": {
+                  "type": "object",
+                  "patternProperties": {
+                    "^(50|[1-9]00)$": {
+                      "type": "string",
+                      "pattern": "^#[0-9A-Fa-f]{6}$"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "required": ["light", "dark"]
+        },
+        "radii": {
+          "type": "object",
+          "description": "Border radius scale",
+          "patternProperties": {
+            "^[a-zA-Z0-9]+$": {
+              "type": "number",
+              "minimum": 0
+            }
+          }
+        },
+        "spacing": {
+          "type": "object",
+          "description": "Spacing scale for margins and padding",
+          "patternProperties": {
+            "^[0-9]+(\\.[0-9]+)?$": {
+              "type": "number",
+              "minimum": 0
+            }
+          }
+        },
+        "typography": {
+          "type": "object",
+          "description": "Typography system",
+          "properties": {
+            "fonts": {
+              "type": "object",
+              "patternProperties": {
+                "^[a-zA-Z][a-zA-Z0-9]*$": {
+                  "type": "string"
+                }
+              }
+            },
+            "fontSizes": {
+              "type": "object",
+              "patternProperties": {
+                "^[a-zA-Z0-9]+$": {
+                  "type": "number",
+                  "minimum": 6,
+                  "maximum": 200
+                }
+              }
+            },
+            "fontWeights": {
+              "type": "object",
+              "patternProperties": {
+                "^[a-zA-Z][a-zA-Z]*$": {
+                  "type": "string",
+                  "pattern": "^[1-9]00$"
+                }
+              }
+            },
+            "lineHeights": {
+              "type": "object",
+              "patternProperties": {
+                "^[a-zA-Z][a-zA-Z]*$": {
+                  "type": "number",
+                  "minimum": 0.8,
+                  "maximum": 3
+                }
+              }
+            },
+            "letterSpacings": {
+              "type": "object",
+              "patternProperties": {
+                "^[a-zA-Z][a-zA-Z]*$": {
+                  "type": "number",
+                  "minimum": -2,
+                  "maximum": 5
+                }
+              }
+            }
+          },
+          "required": ["fonts", "fontSizes", "fontWeights", "lineHeights", "letterSpacings"]
+        },
+        "shadows": {
+          "type": "object",
+          "description": "Shadow definitions",
+          "patternProperties": {
+            "^[a-zA-Z0-9]+$": {
+              "type": "string"
+            }
+          }
+        },
+        "borders": {
+          "type": "object",
+          "description": "Border system",
+          "properties": {
+            "widths": {
+              "type": "object",
+              "patternProperties": {
+                "^[a-zA-Z][a-zA-Z]*$": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 10
+                }
+              }
+            },
+            "styles": {
+              "type": "object",
+              "patternProperties": {
+                "^[a-zA-Z][a-zA-Z]*$": {
+                  "type": "string",
+                  "enum": ["solid", "dashed", "dotted"]
+                }
+              }
+            }
+          },
+          "required": ["widths", "styles"]
+        },
+        "sizes": {
+          "type": "object",
+          "description": "Component size scale",
+          "patternProperties": {
+            "^[a-zA-Z0-9]+$": {
+              "oneOf": [
+                {
+                  "type": "number",
+                  "minimum": 0
+                },
+                {
+                  "type": "string",
+                  "pattern": "^(100%|\\d+%)$"
+                }
+              ]
+            }
+          }
+        },
+        "durations": {
+          "type": "object",
+          "description": "Animation duration scale",
+          "patternProperties": {
+            "^[a-zA-Z][a-zA-Z]*$": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 2000
+            }
+          }
+        },
+        "easings": {
+          "type": "object",
+          "description": "Animation easing functions",
+          "patternProperties": {
+            "^[a-zA-Z][a-zA-Z-]*$": {
+              "type": "string"
+            }
+          }
+        },
+        "opacity": {
+          "type": "object",
+          "description": "Opacity scale",
+          "patternProperties": {
+            "^[a-zA-Z][a-zA-Z]*$": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            }
+          }
+        }
+      },
+      "required": ["colors", "radii", "spacing", "typography", "shadows", "borders", "sizes", "durations", "easings", "opacity"]
+    },
+    "preview": {
+      "type": "object",
+      "description": "Template preview characteristics",
+      "properties": {
+        "primary": {
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{6}$"
+        },
+        "secondary": {
+          "type": "string", 
+          "pattern": "^#[0-9A-Fa-f]{6}$"
+        },
+        "background": {
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{6}$"
+        },
+        "surface": {
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{6}$"
+        },
+        "borderRadius": {
+          "type": "number",
+          "minimum": 0
+        },
+        "shadowIntensity": {
+          "type": "string",
+          "enum": ["none", "light", "medium", "heavy"]
+        }
+      },
+      "required": ["primary", "secondary", "background", "surface", "borderRadius", "shadowIntensity"]
+    }
+  },
+  "required": ["name", "displayName", "description", "author", "version", "personality", "tokens", "preview"]
+}

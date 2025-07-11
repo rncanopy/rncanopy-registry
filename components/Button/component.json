@@ -1,0 +1,56 @@
+{
+  "name": "button",
+  "displayName": "Button",
+  "description": "Customizable button component with multiple variants, sizes, and loading states",
+  "category": "forms",
+  "dependencies": [],
+  "requiredProviders": [
+    "HapticsProvider",
+    "ThemeProvider"
+  ],
+  "files": [
+    "component.tsx.template"
+  ],
+  "exports": [
+    "ButtonVariant",
+    "ButtonSize",
+    "ButtonProps",
+    "Button"
+  ],
+  "variants": [
+    "default",
+    "secondary",
+    "outline",
+    "ghost",
+    "destructive",
+    "success"
+  ],
+  "sizes": [
+    "xs",
+    "sm",
+    "md",
+    "lg",
+    "xl"
+  ],
+  "tokenUsage": [
+    "typography.fontSizes.xs",
+    "iconSizes.xs",
+    "typography.fontSizes.sm",
+    "iconSizes.sm",
+    "typography.fontSizes.lg",
+    "iconSizes.lg",
+    "typography.fontSizes.xl",
+    "iconSizes.xl",
+    "typography.fontSizes.md",
+    "iconSizes.md",
+    "radii.md",
+    "borders.widths.thin",
+    "typography.fontWeights.medium",
+    "typography.lineHeights.normal"
+  ],
+  "hasHaptics": true,
+  "version": "1.0.0",
+  "checksum": "b2c9af0de0c2755f4e3226e3733be0ed",
+  "downloadUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/button/component.tsx.template",
+  "metadataUrl": "https://raw.githubusercontent.com/rncanopy/registry/main/components/button/component.json"
+}

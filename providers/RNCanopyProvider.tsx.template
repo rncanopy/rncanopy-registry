@@ -1,0 +1,24 @@
+import React, { ReactNode } from 'react';
+import { ThemeProvider } from './ThemeProvider';
+import { HapticsProvider } from './HapticsProvider';
+import { ColorMode } from './constants/ui/colors';
+
+interface RNCanopyProviderProps {
+  children: ReactNode;
+  defaultTheme?: ColorMode | 'system';
+  enableHaptics?: boolean;
+}
+
+export function RNCanopyProvider({ 
+  children, 
+  defaultTheme = 'system',
+  enableHaptics = true 
+}: RNCanopyProviderProps) {
+  return (
+    <ThemeProvider defaultMode={defaultTheme}>
+      <HapticsProvider enabled={enableHaptics}>
+        {children}
+      </HapticsProvider>
+    </ThemeProvider>
+  );
+}

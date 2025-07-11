@@ -1,0 +1,235 @@
+import React, { useState } from 'react';
+import { 
+  TouchableOpacity, 
+  Text, 
+  StyleSheet, 
+  Animated,
+  ViewStyle 
+} from 'react-native';
+import { useTheme } from './providers/ThemeProvider';
+import { useHaptics } from './providers/HapticsProvider';
+import { 
+  spacing, 
+  radii, 
+  borders,
+  typography, 
+  opacity,
+  durations
+} from './constants/ui';
+
+export type ToggleVariant = 'default' | 'primary' | 'success' | 'destructive';
+export type ToggleSize = 'sm' | 'md' | 'lg';
+
+export interface ToggleProps {
+  pressed?: boolean;
+  onPressedChange?: (pressed: boolean) => void;
+  variant?: ToggleVariant;
+  size?: ToggleSize;
+  disabled?: boolean;
+  style?: ViewStyle;
+  enableHaptics?: boolean;
+  children?: React.ReactNode;
+}
+
+export function Toggle({
+  pressed: controlledPressed,
+  onPressedChange,
+  variant = 'default',
+  size = 'md',
+  disabled = false,
+  style,
+  enableHaptics = true,
+  children,
+}: ToggleProps) {
+  const { currentColors } = useTheme();
+  const { triggerHaptic } = useHaptics();
+  const [internalPressed, setInternalPressed] = useState(false);
+  const [scaleAnim] = useState(new Animated.Value(1));
+
+  const isControlled = controlledPressed !== undefined;
+  const isPressed = isControlled ? controlledPressed : internalPressed;
+
+  const handlePress = async () => {
+    if (disabled) return;
+
+    const newPressed = !isPressed;
+    
+    if (!isControlled) {
+      setInternalPressed(newPressed);
+    }
+    
+    onPressedChange?.(newPressed);
+    
+    if (enableHaptics) {
+      await triggerHaptic('selection');
+    }
+
+    // Add press animation
+    Animated.sequence([
+      Animated.timing(scaleAnim, {
+        toValue: 0.95,
+        duration: durations.fast,
+        useNativeDriver: true,
+      }),
+      Animated.timing(scaleAnim, {
+        toValue: 1,
+        duration: durations.fast,
+        useNativeDriver: true,
+      }),
+    ]).start();
+  };
+
+  const getSizeStyles = () => {
+    switch (size) {
+      case 'sm':
+        return {
+          paddingVertical: spacing[1],
+          paddingHorizontal: spacing[2],
+          fontSize: typography.fontSizes.xs,
+          minHeight: 28,
+        };
+      case 'lg':
+        return {
+          paddingVertical: spacing[3],
+          paddingHorizontal: spacing[5],
+          fontSize: typography.fontSizes.lg,
+          minHeight: 48,
+        };
+      default: // md
+        return {
+          paddingVertical: spacing[2],
+          paddingHorizontal: spacing[4],
+          fontSize: typography.fontSizes.sm,
+          minHeight: 36,
+        };
+    }
+  };
+
+  const getVariantStyles = () => {
+    if (disabled) {
+      return {
+        backgroundColor: currentColors.disabled,
+        textColor: currentColors.disabledForeground,
+        borderColor: currentColors.disabled,
+      };
+    }
+
+    if (isPressed) {
+      switch (variant) {
+        case 'primary':
+          return {
+            backgroundColor: currentColors.primary,
+            textColor: currentColors.primaryForeground,
+            borderColor: currentColors.primary,
+          };
+        case 'success':
+          return {
+            backgroundColor: currentColors.success,
+            textColor: currentColors.successForeground,
+            borderColor: currentColors.success,
+          };
+        case 'destructive':
+          return {
+            backgroundColor: currentColors.destructive,
+            textColor: currentColors.destructiveForeground,
+            borderColor: currentColors.destructive,
+          };
+        default:
+          return {
+            backgroundColor: currentColors.primary,
+            textColor: currentColors.primaryForeground,
+            borderColor: currentColors.primary,
+          };
+      }
+    }
+
+    // Unpressed state
+    switch (variant) {
+      case 'primary':
+        return {
+          backgroundColor: 'transparent',
+          textColor: currentColors.primary,
+          borderColor: currentColors.primary,
+        };
+      case 'success':
+        return {
+          backgroundColor: 'transparent',
+          textColor: currentColors.success,
+          borderColor: currentColors.success,
+        };
+      case 'destructive':
+        return {
+          backgroundColor: 'transparent',
+          textColor: currentColors.destructive,
+          borderColor: currentColors.destructive,
+        };
+      default:
+        return {
+          backgroundColor: 'transparent',
+          textColor: currentColors.foreground,
+          borderColor: currentColors.border,
+        };
+    }
+  };
+
+  const sizeStyles = getSizeStyles();
+  const variantStyles = getVariantStyles();
+
+  const styles = StyleSheet.create({
+    button: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
+      borderRadius: radii.md,
+      borderWidth: borders.widths.thin,
+      backgroundColor: variantStyles.backgroundColor,
+      borderColor: variantStyles.borderColor,
+      paddingVertical: sizeStyles.paddingVertical,
+      paddingHorizontal: sizeStyles.paddingHorizontal,
+      minHeight: sizeStyles.minHeight,
+      opacity: disabled ? opacity[50] : 1,
+      gap: spacing[1],
+    },
+    text: {
+      fontSize: sizeStyles.fontSize,
+      fontWeight: typography.fontWeights.medium,
+      color: variantStyles.textColor,
+      textAlign: 'center',
+    },
+  });
+
+  return (
+    <Animated.View
+      style={[
+        {
+          transform: [{ scale: scaleAnim }],
+        },
+        style
+      ]}
+    >
+      <TouchableOpacity
+        style={styles.button}
+        onPress={handlePress}
+        disabled={disabled}
+        activeOpacity={opacity[80]}
+        accessible={true}
+        accessibilityLabel="Toggle button"
+        accessibilityHint="Toggles the pressed state"
+        accessibilityRole="button"
+        accessibilityState={{ selected: isPressed }}
+      >
+        {children ? (
+          typeof children === 'string' ? (
+            <Text style={styles.text}>{children}</Text>
+          ) : (
+            children
+          )
+        ) : (
+          <Text style={styles.text}>
+            Toggle
+          </Text>
+        )}
+      </TouchableOpacity>
+    </Animated.View>
+  );
+}

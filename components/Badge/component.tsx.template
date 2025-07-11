@@ -1,0 +1,170 @@
+import React from 'react';
+import { 
+  View, 
+  Text, 
+  StyleSheet, 
+  ViewStyle 
+} from 'react-native';
+import { useTheme } from './providers/ThemeProvider';
+import { 
+  spacing, 
+  radii, 
+  borders, 
+  typography, 
+  iconSizes 
+} from './constants/ui';
+
+export type BadgeVariant = 'default' | 'secondary' | 'destructive' | 'success' | 'outline';
+export type BadgeSize = 'xs' | 'sm' | 'md';
+
+export interface BadgeProps {
+  variant?: BadgeVariant;
+  size?: BadgeSize;
+  leftIcon?: React.ReactNode;
+  rightIcon?: React.ReactNode;
+  children?: React.ReactNode;
+  style?: ViewStyle;
+  disabled?: boolean;
+}
+
+export function Badge({
+  variant = 'default',
+  size = 'xs',
+  leftIcon,
+  rightIcon,
+  children,
+  style,
+  disabled = false,
+}: BadgeProps) {
+  const { currentColors } = useTheme();
+
+  const getVariantStyles = () => {
+    if (disabled) {
+      return {
+        backgroundColor: currentColors.disabled,
+        textColor: currentColors.disabledForeground,
+        borderColor: currentColors.disabled,
+      };
+    }
+
+    switch (variant) {
+      case 'secondary':
+        return {
+          backgroundColor: currentColors.secondary,
+          textColor: currentColors.secondaryForeground,
+          borderColor: currentColors.secondary,
+        };
+      case 'destructive':
+        return {
+          backgroundColor: currentColors.destructive,
+          textColor: currentColors.destructiveForeground,
+          borderColor: currentColors.destructive,
+        };
+      case 'success':
+        return {
+          backgroundColor: currentColors.success,
+          textColor: currentColors.successForeground,
+          borderColor: currentColors.success,
+        };
+      case 'outline':
+        return {
+          backgroundColor: 'transparent',
+          textColor: currentColors.foreground,
+          borderColor: currentColors.border,
+        };
+      default:
+        return {
+          backgroundColor: currentColors.primary,
+          textColor: currentColors.primaryForeground,
+          borderColor: currentColors.primary,
+        };
+    }
+  };
+
+  const getSizeStyles = () => {
+    switch (size) {
+      case 'sm':
+        return {
+          fontSize: typography.fontSizes.sm,
+          paddingVertical: spacing[1],
+          paddingHorizontal: spacing[2],
+          iconSize: iconSizes.sm,
+        };
+      case 'md':
+        return {
+          fontSize: typography.fontSizes.md,
+          paddingVertical: spacing[1.5],
+          paddingHorizontal: spacing[2.5],
+          iconSize: iconSizes.md,
+        };
+      default: // xs
+        return {
+          fontSize: typography.fontSizes.xs,
+          paddingVertical: spacing[0.5],
+          paddingHorizontal: spacing[1.5],
+          iconSize: iconSizes.xs,
+        };
+    }
+  };
+
+  const variantStyles = getVariantStyles();
+  const sizeStyles = getSizeStyles();
+
+  const styles = StyleSheet.create({
+    container: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: variantStyles.backgroundColor,
+      borderRadius: radii.full,
+      paddingVertical: sizeStyles.paddingVertical,
+      paddingHorizontal: sizeStyles.paddingHorizontal,
+      alignSelf: 'flex-start',
+      ...(variant === 'outline' && {
+        borderWidth: borders.widths.thin,
+        borderColor: variantStyles.borderColor,
+      }),
+    },
+    text: {
+      fontSize: sizeStyles.fontSize,
+      fontWeight: typography.fontWeights.medium,
+      lineHeight: typography.lineHeights.tight * sizeStyles.fontSize,
+      color: variantStyles.textColor,
+      textAlign: 'center',
+      textTransform: 'uppercase',
+      letterSpacing: typography.letterSpacings.wide,
+    },
+    leftIconContainer: {
+      marginRight: spacing[1],
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    rightIconContainer: {
+      marginLeft: spacing[1],
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+  });
+
+  return (
+    <View style={[styles.container, style]}>
+      {leftIcon && (
+        <View style={styles.leftIconContainer}>
+          {leftIcon}
+        </View>
+      )}
+      
+      {children && (
+        <Text style={styles.text}>
+          {children}
+        </Text>
+      )}
+      
+      {rightIcon && (
+        <View style={styles.rightIconContainer}>
+          {rightIcon}
+        </View>
+      )}
+    </View>
+  );
+}
